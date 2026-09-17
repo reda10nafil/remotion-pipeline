@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "blender": {
+      "command": "uvx",
+      "args": [
+        "mcp-for-blender",
+        "--port",
+        "9876"
+      ]
+    },
+    "21st-dev-magic": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@21st-dev/cli@latest"
+      ],
+      "env": {
+        "TWENTYFIRST_DEV_API_KEY": "${TWENTYFIRST_DEV_API_KEY}"
+      }
+    },
+    "graphify": {
+      "command": "graphify-mcp",
+      "args": [
+        "graphify-out/graph.json"
+      ]
+    }
+  }
+}

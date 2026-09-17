@@ -1,0 +1,36 @@
+{
+  "mcpServers": {
+    "graphify": {
+      "command": "python",
+      "args": [
+        "-m",
+        "graphify.serve",
+        "d:\\FurInventory Pro\\inventory\\graphify-out\\graph.json"
+      ]
+    },
+    "ruflo": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ruflo@latest",
+        "mcp",
+        "start"
+      ]
+    },
+    "blender": {
+      "command": "uvx",
+      "args": [
+        "mcp-for-blender",
+        "--port",
+        "9876"
+      ]
+    },
+    "21st-dev-magic": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@21st-dev/magic-mcp-server"
+      ]
+    }
+  }
+}

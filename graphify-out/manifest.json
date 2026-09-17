@@ -1,0 +1,692 @@
+{
+  ".agent/mcp_config.json": {
+    "mtime": 1789644163.526757,
+    "seen": 1789655547.3039732,
+    "ast_hash": "5d5acf2fac0aa15d1ba2900b65d40c49",
+    "semantic_hash": "5d5acf2fac0aa15d1ba2900b65d40c49"
+  },
+  ".agent/skills/ui-ux-pro-max/scripts/core.py": {
+    "mtime": 1789640947.521359,
+    "seen": 1789655547.3039732,
+    "ast_hash": "3df4734a785963a8242a56c1b926adfd",
+    "semantic_hash": "3df4734a785963a8242a56c1b926adfd"
+  },
+  ".agent/skills/ui-ux-pro-max/scripts/design_system.py": {
+    "mtime": 1789640947.524882,
+    "seen": 1789655547.3039732,
+    "ast_hash": "08f84d04608a19049c90fc2b1ef314f9",
+    "semantic_hash": "08f84d04608a19049c90fc2b1ef314f9"
+  },
+  ".agent/skills/ui-ux-pro-max/scripts/search.py": {
+    "mtime": 1789640947.5258784,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8c7e35426fe8f6f3ed91e9dce0ed7af1",
+    "semantic_hash": "8c7e35426fe8f6f3ed91e9dce0ed7af1"
+  },
+  ".agents/skills/impeccable/scripts/command-metadata.json": {
+    "mtime": 1789641594.6418223,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a1f7999a1969bcc66a9ca3a4f3782f98",
+    "semantic_hash": "a1f7999a1969bcc66a9ca3a4f3782f98"
+  },
+  ".agents/skills/impeccable/scripts/data/font-index-failures.json": {
+    "mtime": 1789641594.6428223,
+    "seen": 1789655547.3039732,
+    "ast_hash": "5b4fd9d1631c390b9c5883d951b03983",
+    "semantic_hash": "5b4fd9d1631c390b9c5883d951b03983"
+  },
+  ".agents/skills/impeccable/scripts/impeccable": {
+    "mtime": 1789641594.6523857,
+    "seen": 1789655547.3039732,
+    "ast_hash": "f2fd10849e3dc2f9af15535c28470ad4",
+    "semantic_hash": "f2fd10849e3dc2f9af15535c28470ad4"
+  },
+  ".agents/skills/impeccable/scripts/live-browser-dom.js": {
+    "mtime": 1789641594.6544485,
+    "seen": 1789655547.3039732,
+    "ast_hash": "7e050dcec2e475b566fdeae1a7317e58",
+    "semantic_hash": "7e050dcec2e475b566fdeae1a7317e58"
+  },
+  ".agents/skills/impeccable/scripts/live-browser-ignores.js": {
+    "mtime": 1789641594.655452,
+    "seen": 1789655547.3039732,
+    "ast_hash": "e08d31e97007cc803af9a5f0f6a39012",
+    "semantic_hash": "e08d31e97007cc803af9a5f0f6a39012"
+  },
+  ".agents/skills/impeccable/scripts/live-browser-session.js": {
+    "mtime": 1789641594.6564558,
+    "seen": 1789655547.3039732,
+    "ast_hash": "6d6d703be4ba100de389535ba2893fcd",
+    "semantic_hash": "6d6d703be4ba100de389535ba2893fcd"
+  },
+  ".agents/skills/impeccable/scripts/live-browser.js": {
+    "mtime": 1789641594.6609566,
+    "seen": 1789655547.3039732,
+    "ast_hash": "f809c645cf87d2fdc64ba4d35bbab0dc",
+    "semantic_hash": "f809c645cf87d2fdc64ba4d35bbab0dc"
+  },
+  ".agents/skills/impeccable/scripts/modern-screenshot.umd.js": {
+    "mtime": 1789641594.661958,
+    "seen": 1789655547.3039732,
+    "ast_hash": "c6afaf6ebceb162206f6a2e5b0ed653c",
+    "semantic_hash": "c6afaf6ebceb162206f6a2e5b0ed653c"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx": {
+    "mtime": 1789643197.2266378,
+    "seen": 1789655547.3039732,
+    "ast_hash": "9e85538e51e193edd0fdfe2139a270ff",
+    "semantic_hash": "9e85538e51e193edd0fdfe2139a270ff"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/cesium-path.json": {
+    "mtime": 1789643197.2251303,
+    "seen": 1789655547.3039732,
+    "ast_hash": "4d57b5da63aacadee3d7caf2ab07bbfe",
+    "semantic_hash": "4d57b5da63aacadee3d7caf2ab07bbfe"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/city-path.json": {
+    "mtime": 1789643197.2284389,
+    "seen": 1789655547.3039732,
+    "ast_hash": "de3cc1a0dae9e43b4e20a1e1a600a9d2",
+    "semantic_hash": "de3cc1a0dae9e43b4e20a1e1a600a9d2"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/example-Root.tsx": {
+    "mtime": 1789643197.2294538,
+    "seen": 1789655547.3039732,
+    "ast_hash": "d7609dbf420932e402108111337e86ed",
+    "semantic_hash": "d7609dbf420932e402108111337e86ed"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/flight-path.ts": {
+    "mtime": 1789643197.23045,
+    "seen": 1789655547.3039732,
+    "ast_hash": "dfbf4cfe7134569449bb705d89e6ac4c",
+    "semantic_hash": "dfbf4cfe7134569449bb705d89e6ac4c"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs": {
+    "mtime": 1789643197.2380948,
+    "seen": 1789655547.3039732,
+    "ast_hash": "eb7fbd1004df459b720570c9cb925720",
+    "semantic_hash": "eb7fbd1004df459b720570c9cb925720"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx": {
+    "mtime": 1789643197.2484512,
+    "seen": 1789655547.3039732,
+    "ast_hash": "52b019bd78af2cc87fc5012d00078b9a",
+    "semantic_hash": "52b019bd78af2cc87fc5012d00078b9a"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts": {
+    "mtime": 1789643197.2507596,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8bc95a1d80930e1597e10c13ca6a0293",
+    "semantic_hash": "8bc95a1d80930e1597e10c13ca6a0293"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx": {
+    "mtime": 1789643197.2517679,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a79126a406ec6e6c3a34404b2c9adc64",
+    "semantic_hash": "a79126a406ec6e6c3a34404b2c9adc64"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/example-Root.tsx": {
+    "mtime": 1789643197.2494712,
+    "seen": 1789655547.3039732,
+    "ast_hash": "7b36e2b237dd1a0d2e97e246b6c54496",
+    "semantic_hash": "7b36e2b237dd1a0d2e97e246b6c54496"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json": {
+    "mtime": 1789643197.254297,
+    "seen": 1789655547.3039732,
+    "ast_hash": "79f1ffd4974e373ea89e6546141c0ee3",
+    "semantic_hash": "79f1ffd4974e373ea89e6546141c0ee3"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json": {
+    "mtime": 1789643197.255301,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8a2936a84ae07d677ceb00aa3acaeaa0",
+    "semantic_hash": "8a2936a84ae07d677ceb00aa3acaeaa0"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/tokens.ts": {
+    "mtime": 1789643197.2562916,
+    "seen": 1789655547.3039732,
+    "ast_hash": "eae44af6042b98717d9fdbfb26efd8cf",
+    "semantic_hash": "eae44af6042b98717d9fdbfb26efd8cf"
+  },
+  ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs": {
+    "mtime": 1789643197.2642095,
+    "seen": 1789655547.3039732,
+    "ast_hash": "5c65346d3356999fa49be88dd632b344",
+    "semantic_hash": "5c65346d3356999fa49be88dd632b344"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx": {
+    "mtime": 1789643197.3055494,
+    "seen": 1789655547.3039732,
+    "ast_hash": "9e85538e51e193edd0fdfe2139a270ff",
+    "semantic_hash": "9e85538e51e193edd0fdfe2139a270ff"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/cesium-path.json": {
+    "mtime": 1789643197.303886,
+    "seen": 1789655547.3039732,
+    "ast_hash": "4d57b5da63aacadee3d7caf2ab07bbfe",
+    "semantic_hash": "4d57b5da63aacadee3d7caf2ab07bbfe"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/city-path.json": {
+    "mtime": 1789643197.3066661,
+    "seen": 1789655547.3039732,
+    "ast_hash": "de3cc1a0dae9e43b4e20a1e1a600a9d2",
+    "semantic_hash": "de3cc1a0dae9e43b4e20a1e1a600a9d2"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/example-Root.tsx": {
+    "mtime": 1789643197.307824,
+    "seen": 1789655547.3039732,
+    "ast_hash": "d7609dbf420932e402108111337e86ed",
+    "semantic_hash": "d7609dbf420932e402108111337e86ed"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/flight-path.ts": {
+    "mtime": 1789643197.3094609,
+    "seen": 1789655547.3039732,
+    "ast_hash": "dfbf4cfe7134569449bb705d89e6ac4c",
+    "semantic_hash": "dfbf4cfe7134569449bb705d89e6ac4c"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs": {
+    "mtime": 1789643197.3166316,
+    "seen": 1789655547.3039732,
+    "ast_hash": "eb7fbd1004df459b720570c9cb925720",
+    "semantic_hash": "eb7fbd1004df459b720570c9cb925720"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx": {
+    "mtime": 1789643197.3267343,
+    "seen": 1789655547.3039732,
+    "ast_hash": "52b019bd78af2cc87fc5012d00078b9a",
+    "semantic_hash": "52b019bd78af2cc87fc5012d00078b9a"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts": {
+    "mtime": 1789643197.3298604,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8bc95a1d80930e1597e10c13ca6a0293",
+    "semantic_hash": "8bc95a1d80930e1597e10c13ca6a0293"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx": {
+    "mtime": 1789643197.331371,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a79126a406ec6e6c3a34404b2c9adc64",
+    "semantic_hash": "a79126a406ec6e6c3a34404b2c9adc64"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/example-Root.tsx": {
+    "mtime": 1789643197.3288105,
+    "seen": 1789655547.3039732,
+    "ast_hash": "7b36e2b237dd1a0d2e97e246b6c54496",
+    "semantic_hash": "7b36e2b237dd1a0d2e97e246b6c54496"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json": {
+    "mtime": 1789643197.333391,
+    "seen": 1789655547.3039732,
+    "ast_hash": "79f1ffd4974e373ea89e6546141c0ee3",
+    "semantic_hash": "79f1ffd4974e373ea89e6546141c0ee3"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json": {
+    "mtime": 1789643197.3353837,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8a2936a84ae07d677ceb00aa3acaeaa0",
+    "semantic_hash": "8a2936a84ae07d677ceb00aa3acaeaa0"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/tokens.ts": {
+    "mtime": 1789643197.3368964,
+    "seen": 1789655547.3039732,
+    "ast_hash": "eae44af6042b98717d9fdbfb26efd8cf",
+    "semantic_hash": "eae44af6042b98717d9fdbfb26efd8cf"
+  },
+  ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs": {
+    "mtime": 1789643197.343315,
+    "seen": 1789655547.3039732,
+    "ast_hash": "5c65346d3356999fa49be88dd632b344",
+    "semantic_hash": "5c65346d3356999fa49be88dd632b344"
+  },
+  ".agents/skills/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx": {
+    "mtime": 1789643198.9839115,
+    "seen": 1789655547.3039732,
+    "ast_hash": "9e85538e51e193edd0fdfe2139a270ff",
+    "semantic_hash": "9e85538e51e193edd0fdfe2139a270ff"
+  },
+  ".agents/skills/remotion-maps/techniques/cesium/assets/cesium-path.json": {
+    "mtime": 1789643198.9828525,
+    "seen": 1789655547.3039732,
+    "ast_hash": "4d57b5da63aacadee3d7caf2ab07bbfe",
+    "semantic_hash": "4d57b5da63aacadee3d7caf2ab07bbfe"
+  },
+  ".agents/skills/remotion-maps/techniques/cesium/assets/city-path.json": {
+    "mtime": 1789643198.9855537,
+    "seen": 1789655547.3039732,
+    "ast_hash": "de3cc1a0dae9e43b4e20a1e1a600a9d2",
+    "semantic_hash": "de3cc1a0dae9e43b4e20a1e1a600a9d2"
+  },
+  ".agents/skills/remotion-maps/techniques/cesium/assets/example-Root.tsx": {
+    "mtime": 1789643198.9865963,
+    "seen": 1789655547.3039732,
+    "ast_hash": "d7609dbf420932e402108111337e86ed",
+    "semantic_hash": "d7609dbf420932e402108111337e86ed"
+  },
+  ".agents/skills/remotion-maps/techniques/cesium/assets/flight-path.ts": {
+    "mtime": 1789643198.9881742,
+    "seen": 1789655547.3039732,
+    "ast_hash": "dfbf4cfe7134569449bb705d89e6ac4c",
+    "semantic_hash": "dfbf4cfe7134569449bb705d89e6ac4c"
+  },
+  ".agents/skills/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs": {
+    "mtime": 1789643198.994892,
+    "seen": 1789655547.3039732,
+    "ast_hash": "eb7fbd1004df459b720570c9cb925720",
+    "semantic_hash": "eb7fbd1004df459b720570c9cb925720"
+  },
+  ".agents/skills/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx": {
+    "mtime": 1789643199.0025687,
+    "seen": 1789655547.3039732,
+    "ast_hash": "52b019bd78af2cc87fc5012d00078b9a",
+    "semantic_hash": "52b019bd78af2cc87fc5012d00078b9a"
+  },
+  ".agents/skills/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts": {
+    "mtime": 1789643199.0046988,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8bc95a1d80930e1597e10c13ca6a0293",
+    "semantic_hash": "8bc95a1d80930e1597e10c13ca6a0293"
+  },
+  ".agents/skills/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx": {
+    "mtime": 1789643199.0062072,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a79126a406ec6e6c3a34404b2c9adc64",
+    "semantic_hash": "a79126a406ec6e6c3a34404b2c9adc64"
+  },
+  ".agents/skills/remotion-maps/techniques/maptiler/assets/example-Root.tsx": {
+    "mtime": 1789643199.00357,
+    "seen": 1789655547.3039732,
+    "ast_hash": "7b36e2b237dd1a0d2e97e246b6c54496",
+    "semantic_hash": "7b36e2b237dd1a0d2e97e246b6c54496"
+  },
+  ".agents/skills/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json": {
+    "mtime": 1789643199.0072174,
+    "seen": 1789655547.3039732,
+    "ast_hash": "79f1ffd4974e373ea89e6546141c0ee3",
+    "semantic_hash": "79f1ffd4974e373ea89e6546141c0ee3"
+  },
+  ".agents/skills/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json": {
+    "mtime": 1789643199.008218,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8a2936a84ae07d677ceb00aa3acaeaa0",
+    "semantic_hash": "8a2936a84ae07d677ceb00aa3acaeaa0"
+  },
+  ".agents/skills/remotion-maps/techniques/maptiler/assets/tokens.ts": {
+    "mtime": 1789643199.0087326,
+    "seen": 1789655547.3039732,
+    "ast_hash": "eae44af6042b98717d9fdbfb26efd8cf",
+    "semantic_hash": "eae44af6042b98717d9fdbfb26efd8cf"
+  },
+  ".agents/skills/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs": {
+    "mtime": 1789643199.0137556,
+    "seen": 1789655547.3039732,
+    "ast_hash": "5c65346d3356999fa49be88dd632b344",
+    "semantic_hash": "5c65346d3356999fa49be88dd632b344"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx": {
+    "mtime": 1789643200.753546,
+    "seen": 1789655547.3039732,
+    "ast_hash": "9e85538e51e193edd0fdfe2139a270ff",
+    "semantic_hash": "9e85538e51e193edd0fdfe2139a270ff"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/cesium-path.json": {
+    "mtime": 1789643200.7520382,
+    "seen": 1789655547.3039732,
+    "ast_hash": "4d57b5da63aacadee3d7caf2ab07bbfe",
+    "semantic_hash": "4d57b5da63aacadee3d7caf2ab07bbfe"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/city-path.json": {
+    "mtime": 1789643200.754559,
+    "seen": 1789655547.3039732,
+    "ast_hash": "de3cc1a0dae9e43b4e20a1e1a600a9d2",
+    "semantic_hash": "de3cc1a0dae9e43b4e20a1e1a600a9d2"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/example-Root.tsx": {
+    "mtime": 1789643200.75656,
+    "seen": 1789655547.3039732,
+    "ast_hash": "d7609dbf420932e402108111337e86ed",
+    "semantic_hash": "d7609dbf420932e402108111337e86ed"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/flight-path.ts": {
+    "mtime": 1789643200.75656,
+    "seen": 1789655547.3039732,
+    "ast_hash": "dfbf4cfe7134569449bb705d89e6ac4c",
+    "semantic_hash": "dfbf4cfe7134569449bb705d89e6ac4c"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs": {
+    "mtime": 1789643200.7645674,
+    "seen": 1789655547.3039732,
+    "ast_hash": "eb7fbd1004df459b720570c9cb925720",
+    "semantic_hash": "eb7fbd1004df459b720570c9cb925720"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx": {
+    "mtime": 1789643200.773287,
+    "seen": 1789655547.3039732,
+    "ast_hash": "52b019bd78af2cc87fc5012d00078b9a",
+    "semantic_hash": "52b019bd78af2cc87fc5012d00078b9a"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts": {
+    "mtime": 1789643200.776847,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8bc95a1d80930e1597e10c13ca6a0293",
+    "semantic_hash": "8bc95a1d80930e1597e10c13ca6a0293"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx": {
+    "mtime": 1789643200.7781618,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a79126a406ec6e6c3a34404b2c9adc64",
+    "semantic_hash": "a79126a406ec6e6c3a34404b2c9adc64"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/example-Root.tsx": {
+    "mtime": 1789643200.7753253,
+    "seen": 1789655547.3039732,
+    "ast_hash": "7b36e2b237dd1a0d2e97e246b6c54496",
+    "semantic_hash": "7b36e2b237dd1a0d2e97e246b6c54496"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json": {
+    "mtime": 1789643200.7809637,
+    "seen": 1789655547.3039732,
+    "ast_hash": "79f1ffd4974e373ea89e6546141c0ee3",
+    "semantic_hash": "79f1ffd4974e373ea89e6546141c0ee3"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json": {
+    "mtime": 1789643200.7820947,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8a2936a84ae07d677ceb00aa3acaeaa0",
+    "semantic_hash": "8a2936a84ae07d677ceb00aa3acaeaa0"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/tokens.ts": {
+    "mtime": 1789643200.7831762,
+    "seen": 1789655547.3039732,
+    "ast_hash": "eae44af6042b98717d9fdbfb26efd8cf",
+    "semantic_hash": "eae44af6042b98717d9fdbfb26efd8cf"
+  },
+  ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs": {
+    "mtime": 1789643200.78981,
+    "seen": 1789655547.3039732,
+    "ast_hash": "5c65346d3356999fa49be88dd632b344",
+    "semantic_hash": "5c65346d3356999fa49be88dd632b344"
+  },
+  "Potenziamenti/mcp_config.json": {
+    "mtime": 1789640933.8811839,
+    "seen": 1789655547.3039732,
+    "ast_hash": "008bb868c055f5c7981f751e02cf8674",
+    "semantic_hash": "008bb868c055f5c7981f751e02cf8674"
+  },
+  "Potenziamenti/skills/impeccable/scripts/command-metadata.json": {
+    "mtime": 1789641594.6418223,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a1f7999a1969bcc66a9ca3a4f3782f98",
+    "semantic_hash": "a1f7999a1969bcc66a9ca3a4f3782f98"
+  },
+  "Potenziamenti/skills/impeccable/scripts/data/font-index-failures.json": {
+    "mtime": 1789641594.6428223,
+    "seen": 1789655547.3039732,
+    "ast_hash": "5b4fd9d1631c390b9c5883d951b03983",
+    "semantic_hash": "5b4fd9d1631c390b9c5883d951b03983"
+  },
+  "Potenziamenti/skills/impeccable/scripts/impeccable": {
+    "mtime": 1789641594.6523857,
+    "seen": 1789655547.3039732,
+    "ast_hash": "f2fd10849e3dc2f9af15535c28470ad4",
+    "semantic_hash": "f2fd10849e3dc2f9af15535c28470ad4"
+  },
+  "Potenziamenti/skills/impeccable/scripts/live-browser-dom.js": {
+    "mtime": 1789641594.6544485,
+    "seen": 1789655547.3039732,
+    "ast_hash": "7e050dcec2e475b566fdeae1a7317e58",
+    "semantic_hash": "7e050dcec2e475b566fdeae1a7317e58"
+  },
+  "Potenziamenti/skills/impeccable/scripts/live-browser-ignores.js": {
+    "mtime": 1789641594.655452,
+    "seen": 1789655547.3039732,
+    "ast_hash": "e08d31e97007cc803af9a5f0f6a39012",
+    "semantic_hash": "e08d31e97007cc803af9a5f0f6a39012"
+  },
+  "Potenziamenti/skills/impeccable/scripts/live-browser-session.js": {
+    "mtime": 1789641594.6564558,
+    "seen": 1789655547.3039732,
+    "ast_hash": "6d6d703be4ba100de389535ba2893fcd",
+    "semantic_hash": "6d6d703be4ba100de389535ba2893fcd"
+  },
+  "Potenziamenti/skills/impeccable/scripts/live-browser.js": {
+    "mtime": 1789641594.6609566,
+    "seen": 1789655547.3039732,
+    "ast_hash": "f809c645cf87d2fdc64ba4d35bbab0dc",
+    "semantic_hash": "f809c645cf87d2fdc64ba4d35bbab0dc"
+  },
+  "Potenziamenti/skills/impeccable/scripts/modern-screenshot.umd.js": {
+    "mtime": 1789641594.661958,
+    "seen": 1789655547.3039732,
+    "ast_hash": "c6afaf6ebceb162206f6a2e5b0ed653c",
+    "semantic_hash": "c6afaf6ebceb162206f6a2e5b0ed653c"
+  },
+  "Potenziamenti/skills/ui-ux-pro-max/scripts/core.py": {
+    "mtime": 1789640947.521359,
+    "seen": 1789655547.3039732,
+    "ast_hash": "3df4734a785963a8242a56c1b926adfd",
+    "semantic_hash": "3df4734a785963a8242a56c1b926adfd"
+  },
+  "Potenziamenti/skills/ui-ux-pro-max/scripts/design_system.py": {
+    "mtime": 1789640947.524882,
+    "seen": 1789655547.3039732,
+    "ast_hash": "08f84d04608a19049c90fc2b1ef314f9",
+    "semantic_hash": "08f84d04608a19049c90fc2b1ef314f9"
+  },
+  "Potenziamenti/skills/ui-ux-pro-max/scripts/search.py": {
+    "mtime": 1789640947.5258784,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8c7e35426fe8f6f3ed91e9dce0ed7af1",
+    "semantic_hash": "8c7e35426fe8f6f3ed91e9dce0ed7af1"
+  },
+  "build_scene.py": {
+    "mtime": 1789649965.844466,
+    "seen": 1789655547.3039732,
+    "ast_hash": "4ff8053b6c218d1505fd253886c8f8b4",
+    "semantic_hash": "4ff8053b6c218d1505fd253886c8f8b4"
+  },
+  "eslint.config.mjs": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "e20d59bb6b64567da14d80c3da2c6b15",
+    "semantic_hash": "e20d59bb6b64567da14d80c3da2c6b15"
+  },
+  "fix_svg.py": {
+    "mtime": 1789649647.1530037,
+    "seen": 1789655547.3039732,
+    "ast_hash": "ab2ce50c5544ee5e9c0766fe8543d4ee",
+    "semantic_hash": "ab2ce50c5544ee5e9c0766fe8543d4ee"
+  },
+  "package.json": {
+    "mtime": 1789655425.537239,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a740cd1090291582e12c3877e20b11d2",
+    "semantic_hash": "a740cd1090291582e12c3877e20b11d2"
+  },
+  "remotion.config.ts": {
+    "mtime": 1789637878.7219207,
+    "seen": 1789655547.3039732,
+    "ast_hash": "9c8fcbd0f09f9cf94ec1afc157eb0a83",
+    "semantic_hash": "9c8fcbd0f09f9cf94ec1afc157eb0a83"
+  },
+  "skills-lock.json": {
+    "mtime": 1789643201.692575,
+    "seen": 1789655547.3039732,
+    "ast_hash": "0df9e522a34a78ddff9bbe49dbf0993b",
+    "semantic_hash": "0df9e522a34a78ddff9bbe49dbf0993b"
+  },
+  "src/HelloWorld.tsx": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "603fa8a2f184790b91971c4109e73aca",
+    "semantic_hash": "603fa8a2f184790b91971c4109e73aca"
+  },
+  "src/HelloWorld/Arc.tsx": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "81c9128f01c7b242ea106b7d86496df5",
+    "semantic_hash": "81c9128f01c7b242ea106b7d86496df5"
+  },
+  "src/HelloWorld/Atom.tsx": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "84d6d103c82561539bc9e4df504626a7",
+    "semantic_hash": "84d6d103c82561539bc9e4df504626a7"
+  },
+  "src/HelloWorld/Logo.tsx": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "eb1f8e5cc6438ca7c881deb64eda0ea2",
+    "semantic_hash": "eb1f8e5cc6438ca7c881deb64eda0ea2"
+  },
+  "src/HelloWorld/Subtitle.tsx": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a4a6f5bec7582a30b3d43db862a5acf7",
+    "semantic_hash": "a4a6f5bec7582a30b3d43db862a5acf7"
+  },
+  "src/HelloWorld/Title.tsx": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "c4d50786934a65d475e056772bf0c33f",
+    "semantic_hash": "c4d50786934a65d475e056772bf0c33f"
+  },
+  "src/HelloWorld/constants.ts": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a6ffb7292e7a72b13013957085aebc2d",
+    "semantic_hash": "a6ffb7292e7a72b13013957085aebc2d"
+  },
+  "src/Root.tsx": {
+    "mtime": 1789644614.2253244,
+    "seen": 1789655547.3039732,
+    "ast_hash": "8b3068cdaff21a20a41ed0764ca5c7f5",
+    "semantic_hash": "8b3068cdaff21a20a41ed0764ca5c7f5"
+  },
+  "src/Tutorial/components/AgentCard.tsx": {
+    "mtime": 1789644534.489633,
+    "seen": 1789655547.3039732,
+    "ast_hash": "08fd994ff5e3cc454c21aaf999632702",
+    "semantic_hash": "08fd994ff5e3cc454c21aaf999632702"
+  },
+  "src/Tutorial/components/ChatSimulation.tsx": {
+    "mtime": 1789644547.0511208,
+    "seen": 1789655547.3039732,
+    "ast_hash": "c883364baf8046a088248db624b2faa5",
+    "semantic_hash": "c883364baf8046a088248db624b2faa5"
+  },
+  "src/Tutorial/components/CodeWindow.tsx": {
+    "mtime": 1789644538.4016747,
+    "seen": 1789655547.3039732,
+    "ast_hash": "2f4ec34c626535909ce88d72bdfcf245",
+    "semantic_hash": "2f4ec34c626535909ce88d72bdfcf245"
+  },
+  "src/Tutorial/components/Header.tsx": {
+    "mtime": 1789644529.4325693,
+    "seen": 1789655547.3039732,
+    "ast_hash": "854155cffbd47b21ab9cd5a6faace4ca",
+    "semantic_hash": "854155cffbd47b21ab9cd5a6faace4ca"
+  },
+  "src/Tutorial/icons.tsx": {
+    "mtime": 1789644524.8901672,
+    "seen": 1789655547.3039732,
+    "ast_hash": "13e70c5b11f92a373795ff0ed7143067",
+    "semantic_hash": "13e70c5b11f92a373795ff0ed7143067"
+  },
+  "src/Tutorial/index.tsx": {
+    "mtime": 1789644605.7357905,
+    "seen": 1789655547.3039732,
+    "ast_hash": "dadf4000c1542eae18eed10642ac90e2",
+    "semantic_hash": "dadf4000c1542eae18eed10642ac90e2"
+  },
+  "src/Tutorial/scenes/AudioQaScene.tsx": {
+    "mtime": 1789644661.6075633,
+    "seen": 1789655547.3039732,
+    "ast_hash": "9bf9f2f24474fede13d8873a03680937",
+    "semantic_hash": "9bf9f2f24474fede13d8873a03680937"
+  },
+  "src/Tutorial/scenes/Blender3DScene.tsx": {
+    "mtime": 1789644663.4595525,
+    "seen": 1789655547.3039732,
+    "ast_hash": "26309207270d7df4815d249b51903f34",
+    "semantic_hash": "26309207270d7df4815d249b51903f34"
+  },
+  "src/Tutorial/scenes/BriefWorkflowScene.tsx": {
+    "mtime": 1789644566.8211672,
+    "seen": 1789655547.3039732,
+    "ast_hash": "761a889af3323918bea905b481c6a661",
+    "semantic_hash": "761a889af3323918bea905b481c6a661"
+  },
+  "src/Tutorial/scenes/EditingRemotionScene.tsx": {
+    "mtime": 1789644665.627912,
+    "seen": 1789655547.3039732,
+    "ast_hash": "52642fc3c564bef237d498b83b763c20",
+    "semantic_hash": "52642fc3c564bef237d498b83b763c20"
+  },
+  "src/Tutorial/scenes/IntroScene.tsx": {
+    "mtime": 1789644554.4724238,
+    "seen": 1789655547.3039732,
+    "ast_hash": "a7136b6b80be5babd38a70b0d8d13103",
+    "semantic_hash": "a7136b6b80be5babd38a70b0d8d13103"
+  },
+  "src/Tutorial/scenes/PipelineOverviewScene.tsx": {
+    "mtime": 1789644560.9670644,
+    "seen": 1789655547.3039732,
+    "ast_hash": "18b309a18445723c2cd3606474a05eb7",
+    "semantic_hash": "18b309a18445723c2cd3606474a05eb7"
+  },
+  "src/Tutorial/scenes/RecapOutputScene.tsx": {
+    "mtime": 1789644668.3083706,
+    "seen": 1789655547.3039732,
+    "ast_hash": "2c44a753dd0aed7de66fea09bb12edaf",
+    "semantic_hash": "2c44a753dd0aed7de66fea09bb12edaf"
+  },
+  "src/Tutorial/scenes/ScriptHookScene.tsx": {
+    "mtime": 1789644670.6954374,
+    "seen": 1789655547.3039732,
+    "ast_hash": "d7255b926c1380d1dbdcbfcb7d475268",
+    "semantic_hash": "d7255b926c1380d1dbdcbfcb7d475268"
+  },
+  "src/Tutorial/tokens.ts": {
+    "mtime": 1789644518.6626549,
+    "seen": 1789655547.3039732,
+    "ast_hash": "7903449f7401ab1f58c564490fe0a213",
+    "semantic_hash": "7903449f7401ab1f58c564490fe0a213"
+  },
+  "src/index.ts": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "6c2ce436880cb16c98160769ed0f6150",
+    "semantic_hash": "6c2ce436880cb16c98160769ed0f6150"
+  },
+  "test_bounds.py": {
+    "mtime": 1789649676.886311,
+    "seen": 1789655547.3039732,
+    "ast_hash": "71965f7e610d4cf61970a2406718c4b8",
+    "semantic_hash": "71965f7e610d4cf61970a2406718c4b8"
+  },
+  "test_curve_fx.py": {
+    "mtime": 1789649708.3082473,
+    "seen": 1789655547.3039732,
+    "ast_hash": "0901149dc6ad8bccb430e500b528d4cb",
+    "semantic_hash": "0901149dc6ad8bccb430e500b528d4cb"
+  },
+  "test_render_speed.py": {
+    "mtime": 1789649747.007766,
+    "seen": 1789655547.3039732,
+    "ast_hash": "e1ae0726837e0e355ba5f52248e46ebc",
+    "semantic_hash": "e1ae0726837e0e355ba5f52248e46ebc"
+  },
+  "test_samples.py": {
+    "mtime": 1789649784.768151,
+    "seen": 1789655547.3039732,
+    "ast_hash": "db75061ee9f0a54792e4fcb4279e0cbc",
+    "semantic_hash": "db75061ee9f0a54792e4fcb4279e0cbc"
+  },
+  "tsconfig.json": {
+    "mtime": 1788614489.0,
+    "seen": 1789655547.3039732,
+    "ast_hash": "3f9d94814358aa5e8a039f53ae3eee99",
+    "semantic_hash": "3f9d94814358aa5e8a039f53ae3eee99"
+  }
+}
