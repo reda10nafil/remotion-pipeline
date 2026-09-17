@@ -1,7 +1,17 @@
 node_modules
 dist
-.DS_Store
+DS_Store
 .env
 
-# Ignore the output video from Git but not videos you import into src/.
-out
+# Remotion
+.remotion/
+out/
+build/
+
+# File video pesanti (non versionare)
+*.mp4
+*.webm
+
+# File di lavoro Blender (segnaposto pesanti)
+assets_blender/logo_animato.blend
+*.blend1

@@ -32,6 +32,7 @@ Prima di produrre, verifica gli strumenti e installa ciò che manca. Non bloccar
 | uv / uvx | `uvx --version` | `winget install astral-sh.uv` | Blender MCP, Graphify |
 | FFmpeg | `ffmpeg -version` | `winget install Gyan.FFmpeg -e --accept-source-agreements --accept-package-agreements` | skill video-frame-tools |
 | Graphify CLI | `graphify --version` | `uv tool install "graphifyy[anthropic]"` | knowledge graph |
+| yt-dlp (opzionale) | `yt-dlp --version` | automatico via `uvx yt-dlp` (nessuna installazione), oppure `winget install yt-dlp` | download audio royalty-free |
 | Grafo Graphify | esiste `graphify-out/graph.json`? | `graphify extract . --code-only` (codice, gratis). Per includere anche i doc serve `GEMINI_API_KEY` (gratuita) e poi `graphify extract .` | query del grafo |
 | Blender | `blender --version` | `winget install BlenderFoundation.Blender` | agente Grafica 3D |
 | Addon Blender MCP | `uvx mcp-for-blender addon-paths` (deve elencare `addon.py`) | `uvx mcp-for-blender install-addon`, poi in Blender: Preferences > Add-ons > "BlenderMCP" > abilita, pannello N > BlenderMCP > Start MCP Server (porta 9876) | Blender MCP |
@@ -57,6 +58,26 @@ Alternative senza MCP: se Blender MCP non risponde, genera 3D con `@remotion/thr
 | Impeccable / UI-UX Pro Max | skill installate | Standard grafici anti-slop, audit qualità |
 | Remotion skills | skill installate | markup, captions, render, studio, interactivity |
 
+## 5 bis. Pipeline "Logo Reveal 3D" (60 FPS)
+
+Quando viene richiesto un logo reveal 3D da un'immagine raster:
+
+1. **Vettorializzazione**: converti il raster in `assets_blender/logo_source.svg` (simbolo + testo).
+2. **Pulizia topologica (critico, evita linee diagonali/fantasma)**: in Blender Edit Mode → Separate > By Loose Parts; ogni spline deve essere una **curva chiusa** (Cyclic Spline); rimuovi vertici isolati e connessioni spurie tra simbolo e testo.
+3. **Modellazione**: estrusione sull'asse Z; materiale neon Emission `#C8104E` per il tracciamento; corpo metallic/glass; sfondo `#EBEBEB`; Area Light con ombre morbide. Salva in `assets_blender/logo_animato.blend`.
+4. **Animazione 60 FPS** (300 frame = 5s): frame 0-150 tracciamento neon sui perimetri chiusi; frame 120-240 fade-in estrusione solida 3D. Export in `public/assets/logo_3d_render.mp4` a 60 FPS.
+5. **Composizione**: usa `src/compositions/LogoReveal.tsx` (id `LogoReveal`, 1080x1920, 60fps, 300 frame): Layer 1 `<OffthreadVideo>` del render 3D, Layer 2 `<Sparkle>` (frame ~200), Layer 3 `<Audio>` con SFX da `public/audio/`.
+
+## 5 ter. Modulo audio (royalty-free)
+
+L'agente Audio & Sottotitoli cerca e scarica musica di sottofondo SOLO tramite:
+
+```bash
+node scripts/fetch-audio.mjs "<mood/genere>" <nome_file>
+```
+
+Lo script (yt-dlp via `uvx yt-dlp` o binario `yt-dlp`) aggiunge automaticamente alla query i termini obbligatori **"Royalty Free / No Copyright Music / Creative Commons"** e salva in `public/audio/<nome>.mp3`. In Remotion: `<Audio src={staticFile("audio/<nome>.mp3")} />`. MAI scaricare audio con copyright.
+
 ## 6. Convenzioni di cartelle
 
 - `video_da_editare/` — input grezzi dell'utente (clip, audio)
@@ -65,6 +86,12 @@ Alternative senza MCP: se Blender MCP non risponde, genera 3D con `@remotion/thr
 - `public/` — asset statici referenziati con `staticFile()`
 - `.agent/memory/<agente>/knowledge.md` — memoria persistente di ogni agente (leggi prima, aggiorna dopo)
 - `graphify-out/` — knowledge graph (non editare a mano; rigenera con `graphify update .`)
+- `assets_blender/` — sorgenti 3D (`logo_source.svg`, `logo_animato.blend`, ignorato da git)
+- `public/audio/` — tracce audio/SFX scaricate con `scripts/fetch-audio.mjs` (solo royalty-free)
+- `public/assets/` — render finali esportati da Blender (es. `logo_3d_render.mp4`)
+- `src/compositions/` — composizioni video principali (es. `LogoReveal.tsx`)
+- `src/components/` — overlay e VFX 2D riusabili (es. `Sparkle.tsx`)
+- `scripts/` — helper CLI (es. `fetch-audio.mjs`)
 
 ## 7. Comandi utili
 

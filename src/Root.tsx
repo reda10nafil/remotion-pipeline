@@ -4,6 +4,7 @@ import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { TutorialPipeline } from "./Tutorial";
 import { totalDurationInFrames } from "./Tutorial/tokens";
+import { LogoReveal, LOGO_REVEAL } from "./compositions/LogoReveal";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -50,6 +51,16 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+
+      {/* Logo Reveal 3D — verticale 9:16, 60 FPS, 5s. Richiede il render Blender in public/assets/logo_3d_render.mp4 */}
+      <Composition
+        id="LogoReveal"
+        component={LogoReveal}
+        durationInFrames={LOGO_REVEAL.durationInFrames}
+        fps={LOGO_REVEAL.fps}
+        width={LOGO_REVEAL.width}
+        height={LOGO_REVEAL.height}
       />
     </>
   );
