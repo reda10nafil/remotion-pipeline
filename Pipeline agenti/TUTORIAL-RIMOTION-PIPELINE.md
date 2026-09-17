@@ -7,14 +7,17 @@ Guida completa per usare Rimotion con la pipeline di agenti coordinati per la pr
 ## Indice
 
 1. [Cos'è la pipeline](#1-cosè-la-pipeline)
-2. [Struttura del progetto](#2-struttura-del-progetto)
-3. [Come creare un nuovo video](#3-come-creare-un-nuovo-video)
-4. [Comandi disponibili](#4-comandi-disponibili)
-5. [Esempi di prompt](#5-esempi-di-prompt)
-6. [Gli agenti — chi fa cosa](#6-gli-agenti--chi-fa-cosa)
-7. [Sistema di memoria](#7-sistema-di-memoria)
-8. [Strumenti MCP](#8-strumenti-mcp)
-9. [Troubleshooting](#9-troubleshooting)
+2. [Comando rapido "Attiva Remotion"](#1-bis-comando-rapido-attiva-remotion-memorizzato-nel-repository)
+3. [Struttura del progetto](#2-struttura-del-progetto)
+4. [Come creare un nuovo video](#3-come-creare-un-nuovo-video)
+5. [Comandi disponibili](#4-comandi-disponibili)
+6. [Esempi di prompt](#5-esempi-di-prompt)
+7. [Gli agenti — chi fa cosa](#6-gli-agenti--chi-fa-cosa)
+8. [Sistema di memoria](#7-sistema-di-memoria)
+9. [Strumenti MCP, Skill e Tool](#8-strumenti-mcp-skill-e-tool)
+10. [Knowledge Graph (Graphify)](#8-bis-knowledge-graph-graphify--a-cosa-serve)
+11. [Esempi d'uso delle nuove funzionalità](#8-ter-esempi-duso-delle-nuove-funzionalità)
+12. [Troubleshooting](#9-troubleshooting)
 
 ---
 
@@ -35,6 +38,31 @@ Non serve intervento manuale nel montaggio: l'unico momento in cui intervieni è
 
 ---
 
+## 1 bis. Comando rapido: **"Attiva Remotion"** (memorizzato nel repository)
+
+Il comando `Attiva Remotion` è **memorizzato in modo permanente nel repository** (in `CLAUDE.md`, `GEMINI.md` e in questo tutorial): qualsiasi piattaforma AI che apre il progetto (Antigravity, Codex, Cursor, Claude Code, Gemini CLI...) lo riconosce automaticamente in ogni nuova chat.
+
+### Come usarlo
+
+```
+Attiva Remotion e fammi un video che parla di [argomento]
+```
+es. *"Attiva Remotion e fammi un video che parla di sport"*
+
+### Cosa succede
+
+1. **Ruolo istantaneo**: l'agente assume il ruolo di **Video Creative Director** — l'unica interfaccia tra te e la pipeline.
+2. **Intervista di regia mirata** (breve ed elegante):
+   - **Obiettivo e piattaforma**: Reel/TikTok verticale o YouTube orizzontale?
+   - **Durata & ritmo**: short da 30s ad alta intensità o video medio da 1-2 minuti?
+   - **Mood & stile visivo**: dark energetic, minimal motion graphics, tech, neon?
+   - **Materiali**: hai caricato video/foto in `video_da_editare/` o creiamo tutto da codice, grafica e 3D Blender?
+   - **Sottotitoli & audio**: sottotitoli word-by-word con karaoke highlight, musica ritmata?
+3. **Pitch di regia**: ricevute le risposte, presenta il piano (Vision, Hook 0-3s, Storyboard a blocchi) in formato pulito, senza emoji infantili o slop visivo.
+4. **Produzione e render automatico**: con il tuo via libera, coordina in background tutti gli specialisti (Script, Editing Remotion, Blender 3D, Audio, QA) ed esporta il file MP4 finito in `video_renderizzati/` **senza chiedere ulteriori conferme**.
+
+---
+
 ## 2. Struttura del progetto
 
 ```
@@ -45,9 +73,12 @@ Rimotion/
 ├── public/                 ← asset statici (immagini, font, audio)
 ├── .agent/
 │   ├── agents/             ← definizione ruoli agenti (7 file .md)
-│   ├── skills/             ← competenze specializzate (coordination, hook, remotion, impeccable)
+│   ├── skills/             ← competenze specializzate (coordination, hook, color-system, video-frame-tools, impeccable)
 │   ├── memory/             ← "secondo cervello" di ogni agente (knowledge.md)
-│   └── mcp_config.json     ← server MCP configurati (Blender, 21st.dev Magic)
+│   └── mcp_config.json     ← server MCP configurati (Blender, 21st.dev Magic, Graphify)
+├── .agents/skills/         ← skill cross-framework (graphify, impeccable, remotion-*)
+├── graphify-out/           ← knowledge graph del progetto (graph.json + report HTML)
+├── CLAUDE.md / AGENTS.md / GEMINI.md ← istruzioni universali per ogni piattaforma AI
 ├── progetti/               ← un video = una sottocartella di lavoro
 │   └── _template/          ← template per nuovi video (gestito in automatico dall'AI)
 │       ├── brief.md
@@ -265,23 +296,76 @@ Ogni agente ha un "secondo cervello" in `.agent/memory/<nome-agente>/knowledge.m
 
 ---
 
-## 8. Strumenti MCP e Skill Integrate
+## 8. Strumenti MCP, Skill e Tool
 
-| Strumento / MCP | Tipo | Usato da | Scopo |
+### Server MCP (configurati in `.agent/mcp_config.json`)
+
+| MCP | Tipo | Usato da | Scopo |
 |---|---|---|---|
 | **Blender MCP** | MCP Server (porta 9876) | Grafica 3D | Modellazione, animazione, rendering ed esportazione asset 3D |
 | **21st.dev Magic** | MCP (`@21st-dev/cli@latest`) | Editing Remotion | Generazione componenti UI, card e overlay moderni |
+| **Graphify MCP** | MCP (`graphify-mcp`, 10 tool) | Tutti gli agenti | Query sul knowledge graph del progetto: `query_graph`, `shortest_path`, `god_nodes`... Risposte con citazioni file:riga precise |
+
+### Skill di progetto
+
+| Skill | Percorso | Usata da | Scopo |
+|---|---|---|---|
+| **Graphify** | `.agents/skills/graphify/` | Tutti | Domande su codebase/architettura: `graphify query`, `graphify explain`, `graphify path`. Dopo modifiche al codice: `graphify update .` |
+| **Color System** | `.agent/skills/color-system/SKILL.md` | Editing, QA | Palette con `culori` + `chroma-js`: contrasto WCAG, interpolazione OKLCH, scale armoniche, checklist QA contrasto |
+| **Video Frame Tools** | `.agent/skills/video-frame-tools/SKILL.md` | Editing, Audio, QA | Ricette FFmpeg pronte: metadati, estrazione frame, split clip, audio 16kHz per whisper/sottotitoli, storyboard, GIF di anteprima, asset per Remotion |
 | **UI/UX Pro Max** | Skill di Progetto | Editing Remotion | Design system coerente, palette colori e tipografia |
 | **Impeccable** | Skill di Progetto | QA & Editing | Standard anti-slop, WCAG AA contrast, comandi `/impeccable audit` e `/impeccable polish` |
 | **Video Hook Writing** | Skill di Progetto | Script | Tecniche di apertura nei primi 3s, retention e CTA |
 | **Coordination Playbook** | Skill di Progetto | Coordinatore | Regole di scomposizione e sequenziamento pipeline |
 
-> **Nota:** La ricerca web per mercati e trend è integrata nativamente in Antigravity per gli agenti Script e Ricerca Marketing.  
+### Tool di sistema installati
+
+| Tool | Verifica | Scopo |
+|---|---|---|
+| **FFmpeg** | `ffmpeg -version` | Estrazione frame, split clip, audio per sottotitoli, storyboard, GIF anteprima |
+| **Graphify CLI** | `graphify --version` | Knowledge graph del progetto in `graphify-out/` (grafo + report HTML interattivo) |
+| **culori + chroma-js** | pacchetti npm | Contrasto WCAG, interpolazione colore OKLCH, palette armoniche |
+
+> **Nota:** La ricerca web per mercati e trend è integrata nativamente nella piattaforma per gli agenti Script e Ricerca Marketing.  
 > La pubblicazione automatica su social network è riservata alla Fase 2 dopo l'integrazione delle relative chiavi API.
 
 ### Requisiti MCP
 - **Blender:** Blender in esecuzione con l'addon MCP attivo sulla porta 9876.
-- **21st.dev:** Variabile d'ambiente `TWENTYFIRST_DEV_API_KEY` (configurabile con la tua chiave da 21st.dev).
+- **21st.dev:** login effettuato con `npx -y @21st-dev/cli@latest login`.
+- **Graphify:** grafo già generato in `graphify-out/`. L'estrazione semantica dei documenti richiede una `GEMINI_API_KEY` (gratuita) o `ANTHROPIC_API_KEY` valida; il grafo del codice è locale e gratuito. Dopo modifiche importanti al codice: `graphify update .`.
+
+La tabella completa di verifica ambiente (cosa installare se manca qualcosa) è in `CLAUDE.md` §3.
+
+---
+
+## 8 bis. Knowledge Graph (Graphify) — a cosa serve
+
+Graphify ha costruito un grafo dell'intero progetto (migliaia di nodi e archi, comunità di codice correlate) salvato in `graphify-out/`:
+
+- **Per gli agenti:** invece di cercare a tentoni nel codice, interrogano il grafo (`graphify query "come funziona la composizione Tutorial"`) e ottengono risposte con riferimenti `file:riga` precisi → modifiche più accurate e veloci.
+- **Per te:** apri `graphify-out/graph.html` nel browser per esplorare visivamente come sono collegati componenti, scene e agenti.
+- **Dopo modifiche al codice:** chiedi "aggiorna il grafo" oppure esegui `graphify update .`.
+
+---
+
+## 8 ter. Esempi d'uso delle nuove funzionalità
+
+### Esempio — Interrogare il grafo
+```
+Usa Graphify per spiegarmi come è collegata la scena IntroScene al resto della composizione Tutorial.
+```
+
+### Esempio — Video con palette verificata
+```
+Attiva Remotion e fammi un reel da 30s su "3 scorciatoie da tastiera".
+Mood: dark tech. Verifica il contrasto dei testi con la skill color-system (WCAG AA).
+```
+
+### Esempio — Clip esistente con sottotitoli FFmpeg
+```
+Ho messo demo.mp4 in video_da_editare/. Estrai l'audio a 16kHz con FFmpeg,
+genera i sottotitoli word-by-word e monta il reel con karaoke highlight.
+```
 
 ---
 
