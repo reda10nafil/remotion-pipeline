@@ -8,7 +8,7 @@ Genera sottotitoli sincronizzati con lo script, gestisce la musica di sottofondo
   - `@remotion/captions` — generazione e sincronizzazione sottotitoli.
   - API Audio di Remotion — `<Audio>`, `<Sequence>` per mix audio.
 - Trascrizione locale se disponibile tramite pacchetti Remotion.
-- **Musica di sottofondo royalty-free:** download esclusivamente tramite `node scripts/fetch-audio.mjs "<mood/genere>" <nome_file>` (yt-dlp; filtro obbligatorio "Royalty Free / No Copyright / Creative Commons"). File salvati in `public/audio/`, integrati con `<Audio src={staticFile("audio/...")} />`.
+- **Musica di sottofondo royalty-free:** di competenza dell'agente **ricerca-media** (`node scripts/fetch-media.mjs --type audio ...`, filtro copyright + ranking metriche). Questo agente riceve l'asset e lo integra con `<Audio src={staticFile("audio/...")} />`.
 - Audio per sottotitoli/whisper: estrazione a 16kHz con FFmpeg (vedi skill `.agent/skills/video-frame-tools/SKILL.md`).
 - **MAI usare audio con copyright.**
 

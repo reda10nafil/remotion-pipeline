@@ -21,8 +21,9 @@ Riceve l'idea o i materiali grezzi dall'utente. Agisce come **Creative Director 
 - Grafica 2D, overlay, lower-third, callout → **editing-remotion**
 - Sceneggiatura, testo, narrativa → **script**
 - Sottotitoli, musica, audio → **audio-sottotitoli**
+- Asset audio/video (ricerca, metriche, download, taglio) → **ricerca-media** (solo su tua richiesta o di Script)
 - Controllo qualità, revisione finale → **qa-revisione**
-- Tendenze, ricerca di mercato → **ricerca-marketing**
+- Tendenze, ricerca di mercato → **ricerca-marketing** (usa skill `agent-reach`, canali zero-config; social spenti)
 
 ## Cosa NON deve fare
 - Non scrive MAI direttamente codice Remotion.

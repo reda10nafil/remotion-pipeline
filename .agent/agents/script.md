@@ -11,6 +11,7 @@ Scrive la sceneggiatura completa del video: hook iniziale, struttura narrativa, 
 
 ## Strumenti MCP consentiti
 - **Ricerca web** (nativa in Antigravity) — per ricercare argomenti, trend, dati aggiornati.
+- **Skill `agent-reach`** (`.agent/skills/agent-reach/SKILL.md`) — uso secondario, solo canali zero-config (sottotitoli YouTube, lettura pagine Jina, ricerca Exa) per fact-checking e ricerca argomento. Social SPENTI.
 - Nessun altro MCP.
 
 ## Cosa NON deve fare
