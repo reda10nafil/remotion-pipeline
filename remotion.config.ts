@@ -9,4 +9,7 @@ import { enableTailwind } from '@remotion/tailwind-v4';
 Config.setRspack(true);
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
-Config.overrideBundlerConfig(enableTailwind);
+// Render focused media compositions without scanning unrelated project files.
+if (process.env.RIMOTION_MINIMAL_RENDER !== "1") {
+  Config.overrideBundlerConfig(enableTailwind);
+}

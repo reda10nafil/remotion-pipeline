@@ -5,6 +5,7 @@ import { Logo } from "./HelloWorld/Logo";
 import { TutorialPipeline } from "./Tutorial";
 import { totalDurationInFrames } from "./Tutorial/tokens";
 import { LogoReveal, LOGO_REVEAL } from "./compositions/LogoReveal";
+import { TokamakSequence, TOKAMAK_SEQUENCE } from "./compositions/TokamakSequence";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -61,6 +62,14 @@ export const RemotionRoot: React.FC = () => {
         fps={LOGO_REVEAL.fps}
         width={LOGO_REVEAL.width}
         height={LOGO_REVEAL.height}
+      />
+      <Composition
+        id={TOKAMAK_SEQUENCE.id}
+        component={TokamakSequence}
+        durationInFrames={TOKAMAK_SEQUENCE.durationInFrames}
+        fps={TOKAMAK_SEQUENCE.fps}
+        width={TOKAMAK_SEQUENCE.width}
+        height={TOKAMAK_SEQUENCE.height}
       />
     </>
   );

@@ -15,3 +15,5 @@ build/
 # File di lavoro Blender (segnaposto pesanti)
 assets_blender/logo_animato.blend
 *.blend1
+assets_blender/tokamak_demo/frames/
+public/assets/tokamak-demo/

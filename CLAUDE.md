@@ -4,41 +4,50 @@
 
 ## 1. Cos'è questo progetto
 
-**Rimotion** è un progetto [Remotion](https://remotion.dev) (React + TypeScript) con una **pipeline di 7 agenti coordinati** che trasforma un'idea in un video finito: sceneggiatura, montaggio (codice Remotion), audio/sottotitoli, asset 3D, QA. L'utente dà il brief; il sistema produce il video renderizzato in `video_renderizzati/` **senza chiedere conferme intermedie**.
+**Rimotion** è una pipeline riutilizzabile per produrre video con React, Remotion e Blender. Dieci ruoli specializzati coprono coordinamento, ricerca di fatti, script, design system, montaggio, audio e sottotitoli, 3D, integrazione tecnica, QA e ricerca di mercato. Non tutti servono per ogni progetto: il Coordinatore sceglie i ruoli necessari in base al brief. Il risultato renderizzato va in `video_renderizzati/` e nella cartella del progetto.
+
+Il repository deve restare generico: non trasferire in istruzioni, esempi, template, memorie condivise o commit pubblici marchi, CTA, dati o asset di un progetto precedente, salvo richiesta esplicita. Non incorporare nomi di clienti o canali negli aggiornamenti generali.
 
 Documentazione completa: `Pipeline agenti/TUTORIAL-RIMOTION-PIPELINE.md` e `docs/PRD.md`.
 
 ## 2. Come comportarsi
 
 1. **Interfaccia unica**: l'utente parla solo con il **Coordinatore / Creative Director**. Comunicazione elegante e strutturata, stile agenzia di produzione d'élite. Niente emoji casuali, niente slop visivo.
-2. **Comando rapido "Attiva Remotion"**: attivati come Creative Director, fai un'intervista di regia mirata (piattaforma, durata, stile/palette, clip in `video_da_editare/`, asset 3D/audio), presenta la proposta di regia, poi orchestra gli agenti e consegni il video finito.
-3. **Ruoli agenti**: leggi `.agent/agents/<nome>.md` prima di operare in un ruolo. Ogni agente lavora SOLO nel suo ambito; aggiorna il suo `.agent/memory/<nome>/knowledge.md` dopo ogni compito (2-5 righe: cosa ha funzionato, cosa evitare).
+2. **Ricezione del brief**: raccogli solo le preferenze essenziali mancanti (pubblico, piattaforma/aspect ratio, durata, tono, materiali e diritti); nel frattempo porta avanti le parti indipendenti. Distingui una proposta di direzione visiva dalla ricerca fattuale.
+3. **Ruoli agenti**: leggi `.agent/agents/<nome>.md` e `.agent/memory/<nome>/knowledge.md` prima di operare. Rispetta gli ambiti, registra gli handoff in `project-state.md` e aggiorna le memorie pertinenti dopo il lavoro (2–5 righe, preservando intestazioni e modelli).
 4. **Render automatico obbligatorio**: MAI chiedere se renderizzare. A composizione + QA completati:
    ```bash
    npx remotion render src/index.ts <CompositionId> video_renderizzati/<nome-video>.mp4
    ```
-5. **Qualità grafica**: applica le skill `impeccable` e `ui-ux-pro-max` (anti-slop, contrasto WCAG AA >= 4.5:1, token-first). Comandi: `/impeccable audit|polish|critique|animate`.
-6. **Token-first**: i colori/stili vivono in `tokens.ts` della composizione (vedi `src/Tutorial/tokens.ts`), mai sparsi nei componenti. Per le scelte colore usa la skill `.agent/skills/color-system/SKILL.md` (librerie `culori` + `chroma-js`).
-7. **Niente animazioni CSS pure** nei video: usa `useCurrentFrame()`, `interpolate()`, `spring()`. Video nelle composizioni solo con `<OffthreadVideo>`.
+5. **Qualità visiva**: definisci un sistema visivo per ogni progetto prima di costruire le scene (token, palette, type scale, griglia, safe areas, regole diagrammi e movimento). Applica contrasto WCAG AA come target per il testo, controllato sul colore effettivo e sul frame peggiore. Evita preset/ornamenti generici quando non aiutano la comprensione.
+6. **Token-first**: colori, spaziature, tipografia, motion curves e z-layers vivono in `tokens.ts` della composizione, mai duplicati nei componenti. Per le scelte colore usa `.agent/skills/color-system/SKILL.md` (`culori` + `chroma-js`).
+7. **Niente animazioni CSS pure** nei video: usa `useCurrentFrame()`, `interpolate()`, `spring()` o i controlli Remotion compatibili col render deterministico. Video nelle composizioni solo con `<OffthreadVideo>`.
+8. **Verità degli strumenti e stop gate**: verifica versione, processo, MCP/porta e file prima di dichiarare una risorsa attiva o un task completo. Se un passaggio indispensabile richiede l'intervento dell'utente (avvio GUI/server, login, permesso, media mancante o riferimento non verificabile), ferma quel passaggio, indica il fatto preciso e chiedi una singola azione utile. Porta avanti il lavoro indipendente; non fingere output, non inventare workaround e non ripetere tentativi identici.
+9. **Installazioni e operazioni esterne**: non installare pacchetti, avviare server esposti, caricare file o pubblicare contenuti senza autorizzazione adeguata. Preferisci CLI locale già disponibile e alternative offline. Per GitHub, non committare file specifici di clienti, audio/video grezzi, credenziali o segreti; usa branch e pull request quando disponibili.
+10. **Ricerca responsabile**: fatti esterni devono avere fonte aperta, URL diretto, data di consultazione e citazione o passaggio verificabile. Distingui fatti, stime, ipotesi e scelte visive. Se una fonte o citazione non si verifica, non presentare quel dettaglio come accertato.
 
 ## 3. Verifica ambiente — FAI QUESTO ALL'AVVIO
 
-Prima di produrre, verifica gli strumenti e installa ciò che manca. Non bloccare il lavoro: se uno strumento opzionale manca e non si può installare, segnalalo e prosegui con l'alternativa indicata.
+Prima di produrre, verifica gli strumenti disponibili. Questi controlli non autorizzano installazioni: se una dipendenza manca, usa un'alternativa locale già presente quando produce un risultato verificabile; altrimenti registra lo stop gate e chiedi l'azione necessaria. Non eseguire installazioni, login o aggiornamenti globali senza autorizzazione esplicita.
 
-| Strumento | Verifica | Installazione se mancante | Necessario per |
+| Strumento | Verifica | Alternativa senza installazione | Necessario per |
 |---|---|---|---|
-| Node + npm | `node --version` (>= 18) | https://nodejs.org | tutto |
-| Dipendenze progetto | `npm ls remotion @remotion/captions @remotion/three culori chroma-js` | `npm install` (poi `npm install @remotion/captions @remotion/three @remotion/shapes @remotion/transitions @remotion/media-utils three @react-three/fiber @react-three/drei culori chroma-js` se mancanti) | pipeline |
-| uv / uvx | `uvx --version` | `winget install astral-sh.uv` | Blender MCP, Graphify |
-| FFmpeg | `ffmpeg -version` | `winget install Gyan.FFmpeg -e --accept-source-agreements --accept-package-agreements` | skill video-frame-tools |
-| Graphify CLI | `graphify --version` | `uv tool install "graphifyy[anthropic]"` | knowledge graph |
-| yt-dlp (opzionale) | `yt-dlp --version` | automatico via `uvx yt-dlp` (nessuna installazione), oppure `winget install yt-dlp` | download audio royalty-free |
-| Grafo Graphify | esiste `graphify-out/graph.json`? | `graphify extract . --code-only` (codice, gratis). Per includere anche i doc serve `GEMINI_API_KEY` (gratuita) e poi `graphify extract .` | query del grafo |
-| Blender | `blender --version` | `winget install BlenderFoundation.Blender` | agente Grafica 3D |
-| Addon Blender MCP | `uvx mcp-for-blender addon-paths` (deve elencare `addon.py`) | `uvx mcp-for-blender install-addon`, poi in Blender: Preferences > Add-ons > "BlenderMCP" > abilita, pannello N > BlenderMCP > Start MCP Server (porta 9876) | Blender MCP |
-| 21st.dev | `npx -y @21st-dev/cli@latest whoami` | `npx -y @21st-dev/cli@latest login` (browser) | componenti UI |
+| Node + npm | `node --version` (>= 18) | Ferma solo le fasi che dipendono da Node | tutto |
+| Dipendenze progetto | `npm ls remotion @remotion/captions @remotion/three culori chroma-js` | Usa dipendenze già presenti; non modificare lockfile per aggirare un errore | pipeline |
+| uv / uvx | `uvx --version` | CLI già installate o flusso senza MCP | Blender MCP, Graphify |
+| FFmpeg | `ffmpeg -version` | `ffprobe`/strumenti già disponibili o ispezione locale equivalente | controllo media |
+| Graphify CLI | `graphify --version` | Ricerca diretta nei file del repository | knowledge graph |
+| yt-dlp (opzionale) | `yt-dlp --version` | Libreria audio fornita dall'utente o nessuna musica | download audio |
+| Grafo Graphify | esiste `graphify-out/graph.json`? | Ometti il grafo e lavora sui file leggibili | query del grafo |
+| Blender | `blender --version` o verifica del percorso locale | Blender MCP o asset alternativo concordato; mai fingere un render | agente Grafica 3D |
+| Addon Blender MCP | verifica connessione e porta configurata | Se CLI Blender locale è disponibile, usala e verifica il file; altrimenti stop gate | Blender MCP |
+| 21st.dev (opzionale) | verifica CLI e login solo se già configurato | Componenti locali del design system | componenti UI |
 
-Alternative senza MCP: se Blender MCP non risponde, genera 3D con `@remotion/three` o scrivi script Python per Blender da eseguire a parte. Se 21st.dev non è loggato, scrivi i componenti a mano seguendo le skill di design.
+Alternative senza MCP: se Blender MCP non risponde, verifica se Blender CLI è disponibile e può completare il task in background. Usa la CLI solo se l'output può essere verificato. Se la richiesta richiede GUI o server MCP e nessuna alternativa locale è sufficiente, fermati e chiedi all'utente di avviarli. Non sostituire silenziosamente un modello 3D richiesto con un'icona, un toro generico o una grafica 2D. Se 21st.dev non è collegato, costruisci componenti locali con il design system esistente.
+
+### Stop gate obbligatorio
+
+Registra in `project-state.md`: operazione tentata, errore osservato, requisito che manca, cosa resta possibile svolgere e l'azione esatta richiesta all'utente. Non considerare la task completata finché l'azione bloccata non è risolta o il deliverable alternativo non è stato concordato.
 
 ## 4. MCP configurati (`.agent/mcp_config.json`)
 
@@ -82,7 +91,7 @@ Lo script (yt-dlp via `uvx yt-dlp` o binario `yt-dlp`) aggiunge automaticamente 
 
 - `video_da_editare/` — input grezzi dell'utente (clip, audio)
 - `video_renderizzati/` — output finali (consegna qui)
-- `progetti/AAAA-MM-GG_nome/` — lavoro per singolo video (`brief.md`, `project-state.md`, `media/`, `output/`); template in `progetti/_template/`
+- `progetti/AAAA-MM-GG_nome/` — lavoro per singolo video (`brief.md`, `project-state.md`, `design-system.md`, `cronologia.md`, `media/`, `output/`); template in `progetti/_template/`
 - `public/` — asset statici referenziati con `staticFile()`
 - `.agent/memory/<agente>/knowledge.md` — memoria persistente di ogni agente (leggi prima, aggiorna dopo)
 - `graphify-out/` — knowledge graph (non editare a mano; rigenera con `graphify update .`)

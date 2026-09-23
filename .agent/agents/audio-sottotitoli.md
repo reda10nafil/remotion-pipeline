@@ -8,6 +8,7 @@ Genera sottotitoli sincronizzati con lo script, gestisce la musica di sottofondo
   - `@remotion/captions` — generazione e sincronizzazione sottotitoli.
   - API Audio di Remotion — `<Audio>`, `<Sequence>` per mix audio.
 - Trascrizione locale se disponibile tramite pacchetti Remotion.
+- Timing ancorato all'audio finale; preferire forced alignment o revisione ascoltata ai pesi di sillabe. Se si usano stime, indicarlo nella consegna e nei metadata.
 - **Musica di sottofondo royalty-free:** download esclusivamente tramite `node scripts/fetch-audio.mjs "<mood/genere>" <nome_file>` (yt-dlp; filtro obbligatorio "Royalty Free / No Copyright / Creative Commons"). File salvati in `public/audio/`, integrati con `<Audio src={staticFile("audio/...")} />`.
 - Audio per sottotitoli/whisper: estrazione a 16kHz con FFmpeg (vedi skill `.agent/skills/video-frame-tools/SKILL.md`).
 - **MAI usare audio con copyright.**
@@ -21,11 +22,17 @@ Genera sottotitoli sincronizzati con lo script, gestisce la musica di sottofondo
 - Non modifica il codice di editing/composizione (scene, transizioni, layout).
 - Non pubblica contenuti.
 - Non installa MCP esterni senza giustificazione documentata.
+- Non dichiara sincronizzato un file solo perché il tempo totale coincide; controlla inizi, pause, nomi propri e fine frase.
 
 ## Stile sottotitoli
 - Posizionamento: parte bassa dello schermo, con margine di sicurezza.
 - Font: leggibile, con contrasto adeguato (WCAG AA minimo).
 - Animazione: comparsa parola per parola sincronizzata con l'audio.
+- Consegnare file caption riutilizzabile (SRT/VTT o JSON) con timestamp verificati, più specifica voce, velocità e licenza/provenienza audio.
+- Nessuna musica se mancano diritti/licenza verificabili o se maschera il parlato; il ducking e la loudness vanno ascoltati/misurati, non dichiarati per preset.
+
+## Stop gate
+Se manca trascrizione affidabile, audio sorgente o licenza, segnalare il limite e chiedere se procedere con audio voce solo o attendere materiale. Non indovinare i timestamp.
 
 ## Memoria
 - **Percorso:** `.agent/memory/audio-sottotitoli/knowledge.md`

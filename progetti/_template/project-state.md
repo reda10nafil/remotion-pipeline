@@ -5,7 +5,7 @@
 ## Stato generale
 
 - **Fase corrente:** `non-iniziato`
-  <!-- non-iniziato | script | editing | audio | qa | completato -->
+  <!-- non-iniziato | dossier | design-system | script | 3d | editing | audio | qa | render | completato | bloccato -->
 - **Ultima modifica:**
 - **Agente attivo:**
 
@@ -22,3 +22,11 @@
 ## Problemi aperti
 
 <!-- Issue segnalati da QA o da altri agenti che necessitano attenzione -->
+
+## Stop gate
+
+<!-- Registra prova, requisito mancante, lavoro indipendente possibile e azione precisa richiesta all'utente -->
+
+## Cronologia
+
+<!-- Aggiorna anche cronologia.md con il registro completo -->

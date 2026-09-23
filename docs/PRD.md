@@ -1,134 +1,129 @@
-# PRD — Pipeline di agenti coordinati per editing video (Remotion)
+# PRD — Pipeline video assistita da agenti
 
-**Fase attuale:** solo produzione e test locali. Pubblicazione (YouTube/TikTok/Instagram) esclusa: nessuna API configurata. La pubblicazione è Fase 2 (vedi in fondo).
+**Ambito:** produzione locale con Remotion, Blender, audio e strumenti di ricerca. La pubblicazione è esclusa finché non esiste un flusso autorizzato e credenziali configurate.
 
----
+## 1. Obiettivo e principi
 
-## 1. Obiettivo
+Trasformare un brief in un video locale verificabile, modificabile e riproducibile, mantenendo separate ricerca, scrittura, direzione visiva, modellazione, montaggio, audio e QA.
 
-Costruire, dentro il progetto Remotion esistente, un sistema di agenti coordinati capaci di:
-- prendere un'idea di video e produrre in autonomia sceneggiatura, montaggio (codice Remotion), audio e sottotitoli;
-- imparare nel tempo dai propri errori e successi (un "secondo cervello" persistente per ciascun agente);
-- migliorare le proprie strategie di editing e di marketing attingendo a ricerche fatte sul web da un agente dedicato.
+Principi non negoziabili:
 
-Non è richiesto nessun intervento umano nel montaggio linea per linea: l'utente dà il brief, il sistema produce una bozza di video pronta per la revisione.
+1. Il brief e le fonti controllate sono la base: niente numeri, citazioni o causalità inventati.
+2. Un'immagine deve essere ciò che dichiara: un diagramma è un diagramma; un'illustrazione concettuale non si spaccia per un dispositivo reale.
+3. Sistema visivo, animazione, audio e sottotitoli sono specificati e controllati, non affidati a preset ciechi.
+4. Tool e file vengono verificati prima di dichiarare un risultato. Se un requisito essenziale è bloccato, si fermano solo i passaggi dipendenti e si chiede all'utente l'intervento preciso.
+5. Output, sorgenti, fonti, licenze e decisioni sono registrati per rendere il lavoro ripetibile.
+6. La documentazione comune e i commit di pipeline restano neutri: nessun nome, logo, CTA, asset o dato appartenente a progetti cliente precedenti, salvo esplicita richiesta.
 
----
+## 2. Ruoli (dieci)
 
-## 2. Struttura di cartelle
+Il Coordinatore attiva solo i ruoli necessari; alcune fasi sono parallele, ma gli handoff e le dipendenze restano espliciti.
 
-```
-/ (radice progetto)
-├── src/                          # già esistente (componenti Remotion)
-├── public/                       # già esistente
-├── .agent/
-│   ├── agents/                   # un file .md per ciascun agente
-│   │   ├── coordinatore.md
-│   │   ├── script.md
-│   │   ├── editing-remotion.md
-│   │   ├── audio-sottotitoli.md
-│   │   ├── qa-revisione.md
-│   │   ├── ricerca-marketing.md
-│   │   └── grafica-3d.md
-│   ├── skills/                   # skill locali custom del progetto
-│   │   ├── coordination-playbook/SKILL.md
-│   │   ├── video-hook-writing/SKILL.md
-│   │   ├── remotion/SKILL.md
-│   │   └── ui-ux-pro-max/       # già installata
-│   ├── memory/                   # "secondo cervello" di ogni agente
-│   │   ├── coordinatore/knowledge.md
-│   │   ├── script/knowledge.md
-│   │   ├── editing-remotion/knowledge.md
-│   │   ├── audio-sottotitoli/knowledge.md
-│   │   ├── qa-revisione/knowledge.md
-│   │   ├── ricerca-marketing/knowledge.md
-│   │   └── grafica-3d/knowledge.md
-│   └── mcp_config.json
-├── progetti/                     # una sottocartella per ogni video prodotto
-│   └── _template/
-│       ├── brief.md
-│       ├── project-state.md
-│       └── output/
-└── docs/
-    └── PRD.md                    # questo documento
+| Ruolo | File agente | Responsabilità |
+|---|---|---|
+| Coordinatore / Creative Director | `.agent/agents/coordinatore.md` | Brief, scomposizione, sequenza, stato, handoff, stop gate e consegna |
+| Ricerca e Fact-Checking | `.agent/agents/ricerca-fact-check.md` | Dossier di claim, fonti, citazioni, certezza e trappole |
+| Script | `.agent/agents/script.md` | Voice-over, struttura, pacing e claim-id per ogni fatto |
+| Design System | `.agent/agents/design-system.md` | Direzione visiva, token, tipografia, griglia, grafica dati e motion rules |
+| Editing Remotion | `.agent/agents/editing-remotion.md` | Scene, animazione deterministica, asset integration e composition |
+| Grafica 3D | `.agent/agents/grafica-3d.md` | Modello, cutaway, simulazione visuale qualitativa, animazione, `.blend` e render |
+| Pipeline Tecnica | `.agent/agents/pipeline-technical.md` | Ambiente, bridge tra strumenti, manifest, codec, automazione e riproducibilità |
+| Audio e Sottotitoli | `.agent/agents/audio-sottotitoli.md` | Voce, musica con licenza, mix, forced alignment/caption export |
+| QA / Revisione | `.agent/agents/qa-revisione.md` | Audit scientifico, visivo, audio, accessibilità e file esportato |
+| Ricerca Marketing e Piattaforme | `.agent/agents/ricerca-marketing.md` | Trend e documentazione di piattaforme; raccomandazioni non fattuali |
+
+## 3. Sequenza di produzione e dipendenze
+
+```text
+Brief → stato iniziale e inventario asset
+             ├─ Ricerca/fact-check → dossier con claim-id ─→ Script finale
+             └─ Design System → direzione visiva + token
+Script + direzione visiva → storyboard/beat sheet
+              ├─ Blender 3D → modello .blend + render/preview
+              ├─ Editing Remotion ← asset, token e timing
+              ├─ Audio/sottotitoli ← script definitivo + voce finale
+              └─ Pipeline tecnica → manifest, integrazione e controlli formato
+Assembla → QA → fix puntuali → render → verifica MP4 → archivio/consegna
 ```
 
----
+Marketing è facoltativo e non alimenta claim scientifici o di attualità senza passare per Fact-Checking. Audio può procedere insieme a Editing solo quando il testo parlato è bloccato. Blender può procedere dopo uno storyboard tecnico con fonti e limiti di fedeltà.
 
-## 3. Architettura degli agenti
+## 4. Dossier delle fonti
 
-Un solo **coordinatore** più sei agenti specializzati.
+Per ogni claim, registrare:
 
-### 3.1 Coordinatore
-- **Ruolo:** riceve il brief dall'utente, lo scompone in compiti, decide l'ordine, assegna ogni compito all'agente giusto, aggrega i risultati, aggiorna `project-state.md`.
-- **Competenze:** playbook di scomposizione/instradamento (skill `coordination-playbook`).
-- **Strumenti MCP:** nessuno esterno; solo lettura/scrittura file di progetto.
-- **Memoria:** `.agent/memory/coordinatore/knowledge.md`
-- **Non fa:** non scrive mai direttamente codice Remotion o testo dello script.
+- `claim_id` stabile e formulazione atomica;
+- autore/ente, titolo, URL diretto, data della fonte e data di accesso;
+- citazione breve esatta o localizzatore (pagina, tabella, sezione, timecode), senza estratti inventati;
+- certezza e tipo di evidenza: osservato, peer-reviewed, consenso, discusso, stima, obiettivo o tradizione;
+- limiti, unità, condizioni sperimentali e formulazione accessibile;
+- destinazione prevista: parlato, grafica, caption o escluso.
 
-### 3.2 Agente Script
-- **Ruolo:** scrive la sceneggiatura: hook iniziale, struttura narrativa, ritmo, call-to-action finale.
-- **Competenze:** skill locale `video-hook-writing`.
-- **Strumenti MCP:** ricerca web.
-- **Memoria:** `.agent/memory/script/knowledge.md`
+Aprire e leggere la fonte primaria, non fidarsi solo di snippet. Verificare che la parafrasi conservi attori, condizioni, denominatori e incertezza. Citazioni insufficienti non sostengono il claim. Se non si trova una fonte affidabile, si rimuove/qualifica il fatto o si chiede una fonte all'utente.
 
-### 3.3 Agente Editing Remotion
-- **Ruolo:** trasforma lo script in composizione Remotion + overlay/grafica con 21st.dev Magic.
-- **Competenze:** Remotion Skill ufficiale, MCP 21st.dev Magic, skill `ui-ux-pro-max` + `impeccable`.
-- **Memoria:** `.agent/memory/editing-remotion/knowledge.md`
+## 5. Direzione visiva e design system
 
-### 3.4 Agente Audio & Sottotitoli
-- **Ruolo:** genera sottotitoli sincronizzati, gestisce musica e mix audio.
-- **Competenze:** pacchetti nativi Remotion (`@remotion/captions`).
-- **Memoria:** `.agent/memory/audio-sottotitoli/knowledge.md`
+Prima di animare, consegnare `design-system.md` con concept, palette semantica, typography scale, griglia, safe area, scale numeriche, gerarchia informativa, stili diagramma, motion curves, contrasto e fallback locali. I colori e gli spazi vivono in token condivisi.
 
-### 3.5 Agente QA/Revisione
-- **Ruolo:** controlla il render + audit Impeccable su elementi grafici/UI.
-- **Memoria:** `.agent/memory/qa-revisione/knowledge.md`
+Per immagini originali professionali:
 
-### 3.6 Agente Ricerca Marketing
-- **Ruolo:** cerca tendenze di editing, formati, tecniche di hook/retention.
-- **Memoria:** `.agent/memory/ricerca-marketing/knowledge.md` (condivisa in lettura).
+- partire dal significato della scena e assegnare a ogni visual un lavoro didattico;
+- scegliere asset reali concessi o produrre illustrazioni, geometrie e diagrammi originali;
+- evitare stock decorativo, “HUD” fittizi, circuiti casuali e glow che suggerisce misure inesistenti;
+- includere fonti e didascalie quando si ricostruiscono oggetti reali; marcare i modelli semplificati e fuori scala;
+- controllare un'anteprima mobile e i frame nei punti di taglio prima del render integrale.
 
-### 3.7 Agente Grafica 3D
-- **Ruolo:** crea asset 3D via MCP Blender. Non tocca codice Remotion.
-- **Memoria:** `.agent/memory/grafica-3d/knowledge.md`
+## 6. Protocollo Blender scientifico
 
----
+Per ricostruire una macchina/strumento e non un simbolo:
 
-## 4. Sistema di memoria
+1. Ricevere uno storyboard tecnico e raccogliere diagrammi/fonti ufficiali; decidere se modello specifico, generico o illustrativo.
+2. Elencare e modellare separatamente componenti che spiegano il funzionamento; prevedere vista esterna, sezione/cutaway e nomi oggetto chiari.
+3. Verificare proporzioni solo se documentate; altrimenti scrivere “schema qualitativo, non in scala”. Non inventare quote.
+4. Animare una sequenza comprensibile (stato iniziale, attivazione delle sottostrutture, processo, regime/controllo, misura o trasferimento energetico). Usare curve e particelle solo per visualizzare grandezze reali; dichiarare la natura qualitativa delle simulazioni.
+5. Distinguere test fisici da generazione elettrica. Mostrare una conversione in turbina/rete solo come impianto concettuale futuro, separato e marcato, quando la macchina sperimentale non ha tale funzione.
+6. Renderizzare still a bassa risoluzione per inizio, transizioni e fine; ispezionarli. Poi produrre export con fps, codec, alpha/color space e risoluzione definiti.
+7. Consegnare `.blend`, script di generazione, reference URLs, preview ed export; registrarne i limiti e il checksum.
 
-Ogni agente ha un file `knowledge.md`. Formato di ogni voce:
-```
-### AAAA-MM-GG — [nome-video]
-- Cosa ha funzionato: ...
-- Cosa evitare la prossima volta: ...
-```
+Se Blender MCP/GUI è richiesto ma non attivo, verificare se Blender CLI locale può compiere e far controllare il task. Se non può, interrompere la fase e chiedere di avviare il programma/server; non consegnare un placeholder come se fosse il modello richiesto.
 
-Ciclo obbligatorio:
-1. Prima di iniziare: legge il proprio `knowledge.md`.
-2. Dopo aver finito: aggiunge 2-5 righe di sintesi.
-3. Consolidamento ogni 10-15 voci.
+## 7. Specifiche Remotion
 
----
+- Video e grafici animati sono funzione del frame; niente animazioni CSS con tempi reali. Usare `useCurrentFrame`, `interpolate`, `spring`, `<Sequence>` e i componenti Remotion appropriati.
+- Un token system per palette, tipo, spaziatura, motion, z-layer e safe areas.
+- Una composition/scena modulare; dati, testo e durata provengono da props/manifest unici, non da doppie copie manuali.
+- Audio video esclusivamente via componenti Remotion (`<Audio>`, `<OffthreadVideo>` o API appropriata).
+- Render automatico dopo QA, salvo stop gate o istruzioni contrarie. Registrare comando, versione Remotion, risoluzione, fps, codec/CRF e path finale.
 
-## 5. MCP installati
+## 8. Audio e sottotitoli
 
-1. **Blender** (porta 9876) — asset 3D
-2. **21st.dev Magic** — componenti UI
-3. **Ruflo** — orchestrazione (versione ≥ 3.16.3, solo locale)
+1. Registrare provenienza e licenza per TTS, voce, musica ed effetti; non usare musica senza autorizzazione verificabile.
+2. Misurare la durata dei file audio definitivi. Non derivarla solo dal numero di parole/sillabe.
+3. Caption da forced alignment o allineamento manuale ascoltato. Timing stimato da sillabe deve essere esplicitamente etichettato come stima.
+4. Esportare SRT/VTT o JSON e confrontare i timestamp con waveform/ascolto. Verificare nomi, numeri, unità, punteggiatura e safe area.
+5. Mix: controllare clipping, picchi e intelligibilità con misuratore e ascolto; ducking è un processo da verificare, non una percentuale dichiarata senza test.
 
-Esclusi: qualunque MCP di pubblicazione (Fase 2).
+## 9. QA e stop gate
 
----
+Il pass QA verifica dossier ↔ parlato ↔ testo a schermo; target, ritmo e durata; accuratezza del visual; contrasto e safe area; transizioni; pronuncia/caption; licenze; dimensioni, frame rate, durata e tracce del file. Ispeziona una contact sheet o frame chiave lungo l'intero video e ascolta l'audio completo se possibile.
 
-## 6. Flusso operativo
+### Regola di arresto
 
-1. Utente scrive il brief in `progetti/AAAA-MM-GG_nome-video/brief.md`.
-2. Coordinatore legge il brief, crea `project-state.md`, assegna compiti.
-3. Script produce lo script.
-4. Editing Remotion monta il video.
-5. Audio & Sottotitoli prepara audio e sottotitoli.
-6. Coordinatore assembla, passa a QA/Revisione.
-7. QA controlla; se ok consegna, se no torna al Coordinatore.
-8. Ogni agente aggiorna il proprio `knowledge.md`.
+Quando un requisito essenziale dipende da interazione utente, server, GUI, login, accesso non disponibile, fonte o file mancante:
+
+1. Verifica una volta strumenti e alternative autorizzate; non ripetere lo stesso tentativo.
+2. Continua le parti indipendenti e registra errore letterale, attività fermata, conseguenza e lavoro già fatto.
+3. Chiedi l'intervento minimo e specifico (cosa avviare, quale file o accesso fornire).
+4. Non dichiarare finito il deliverable incompleto; non sostituire la richiesta con un surrogato senza concordarlo.
+
+## 10. Repository, privacy e pubblicazione
+
+- Un progetto = `progetti/AAAA-MM-GG_slug/` con `brief.md`, dossier/script, `project-state.md`, media, manifest, output, fonti e `CRONOLOGIA.md`.
+- `video_renderizzati/` contiene gli export pronti per revisione.
+- I commit di pipeline contengono solo documentazione, agenti, codice generico, asset dimostrativi neutri e test minimi pertinenti. Escludono media di cliente, nomi di canali/brand, credenziali e segreti.
+- Modifiche GitHub: branch dedicato, revisione del diff, commit e push autorizzato; preferire pull request quando il provider lo consente. Non incorporare incidentalmente modifiche preesistenti della working tree.
+- Nessuna pubblicazione social/upload automatico senza autorizzazione esplicita e flusso configurato.
+
+## 11. Memoria degli agenti
+
+Ogni ruolo legge `.agent/memory/<ruolo>/knowledge.md` all'inizio e aggiunge 2–5 righe alla fine del lavoro. Preserva header e righe esistenti; la memoria contiene pattern riutilizzabili, non log, brand o materiale sorgente copiato.

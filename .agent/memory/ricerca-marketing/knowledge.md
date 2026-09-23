@@ -15,3 +15,7 @@
 ---
 
 <!-- Le voci vanno aggiunte qui sotto, in ordine cronologico -->
+
+### 2026-09-24 — separazione ricerca e verifica
+- Cosa ha funzionato: distinguere trend editoriali da fact-check impedisce di usare esempi virali come prove.
+- Cosa evitare la prossima volta: registrare data, fonte e limiti di ogni raccomandazione; non promettere performance.

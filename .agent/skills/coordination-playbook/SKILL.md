@@ -1,94 +1,60 @@
 ---
 name: coordination-playbook
-description: Regole di scomposizione, instradamento e sequenziamento per il Coordinatore della pipeline video.
+description: Scomposizione, routing, dipendenze, gate di qualità e stop per la pipeline video.
 ---
 
 # Coordination Playbook
 
-Skill locale per l'agente Coordinatore. Contiene le regole operative per scomporre un brief in compiti, instradare ogni compito all'agente giusto, e gestire il flusso di produzione.
+## Intake
 
-## 1. Ricezione del Brief
+1. Leggi il brief, le istruzioni repository e le memorie dei soli ruoli che attiverai.
+2. Crea `project-state.md`, `decision-log.md` se utile e cartella `progetti/<data>_<slug>/` senza alterare altri progetti.
+3. Registra durata, ratio, fps, pubblico, tono, canali di uscita, materiali, diritti e criteri di accettazione.
+4. Non chiedere conferme per scelte reversibili; chiedi solo i dettagli che cambiano materialmente l'output. Continua le attività indipendenti mentre attendi.
 
-Quando ricevi un brief:
-1. **Leggi** il brief completo in `brief.md`.
-2. **Leggi** il tuo `knowledge.md` per pattern già noti.
-3. **Leggi** il `knowledge.md` di Ricerca Marketing per tendenze aggiornate.
-4. **Crea** il `project-state.md` con stato iniziale.
+## Routing
 
-## 2. Regole di Scomposizione
-
-### Compiti atomici
-Scomponi sempre il brief in compiti atomici e indipendenti:
-- Ogni compito deve essere realizzabile da un singolo agente.
-- Ogni compito deve avere un deliverable chiaro (file, codice, report).
-- Nessun compito deve richiedere conoscenza che un altro agente non ha ancora prodotto.
-
-### Sequenza obbligatoria
-```
-1. [Script]        → sceneggiatura completa
-2. [Editing]       → composizione Remotion
-3. [Audio]         → sottotitoli + audio (parallelizzabile con editing se lo script è definitivo)
-4. [Grafica 3D]    → asset 3D (parallelizzabile, indipendente dallo script)
-5. [QA/Revisione]  → controllo finale
-```
-
-### Parallelismo consentito
-- Audio e Editing possono lavorare in parallelo **solo se lo script è definitivo**.
-- Grafica 3D può lavorare in parallelo con qualsiasi fase, purché il brief sia chiaro sugli asset necessari.
-- Ricerca Marketing può lavorare in qualsiasi momento.
-
-## 3. Regole di Instradamento
-
-| Tipo di richiesta | Agente destinatario |
+| Bisogno | Ruolo |
 |---|---|
-| Sceneggiatura, testo, narrativa, hook | **script** |
-| Codice Remotion, scene, transizioni, layout | **editing-remotion** |
-| Overlay, card, lower-third, UI a schermo | **editing-remotion** |
-| Sottotitoli, audio, musica, mix | **audio-sottotitoli** |
-| Logo 3D, intro animata 3D, oggetti 3D | **grafica-3d** |
-| Controllo qualità, revisione render | **qa-revisione** |
-| Tendenze, ricerca mercato, best practice | **ricerca-marketing** |
+| Dati, citazioni e fonti | Ricerca e Fact-Checking |
+| Voce, narrativa e CTA | Script |
+| Colori, token, gerarchia e grafica dati | Design System |
+| Scene e grafica animata | Editing Remotion |
+| Modello o processo 3D | Grafica 3D |
+| Versioni, manifest, codec e bridge | Pipeline Tecnica |
+| TTS, mix, caption | Audio e Sottotitoli |
+| Verifica integrata | QA/Revisione |
+| Trend di formato/piattaforma | Ricerca Marketing (facoltativa) |
 
-## 4. Gestione Errori
+## Sequenza
 
-- Se un agente non riesce a completare → registra il problema in `project-state.md`, riassegna o richiedi aiuto.
-- Se QA trova problemi → torna all'agente responsabile con le note precise, non rifare da zero.
-- Se un compito è ambiguo → chiedi chiarimento all'utente prima di procedere.
+```text
+brief → progetto/stato → fonti verificate → script claim-bound
+                            └──────────────→ visual direction/tokens
+script + visual direction → storyboard → Blender + Remotion + audio + pipeline tech
+integrazione → QA scientifico/visivo/audio/file → fix → render → ispezione → handoff
+```
 
-## 5. Aggiornamento project-state.md
+Mai far creare a Script dati mancanti. Gli asset visivi possono essere preparati in parallelo quando una fonte/brief fornisce confini chiari. Sottotitoli finali seguono la voce definitiva.
 
-Dopo ogni compito completato:
-1. Aggiorna la fase corrente.
-2. Aggiorna la tabella dei compiti.
-3. Registra eventuali decisioni prese.
-4. Segnala problemi aperti.
+## Handoff minimo
 
-## 6. Anti-pattern da evitare
+Ogni assegnazione specifica input, output/path, claim-id o vincoli, ambiente/tool, criterio di accettazione e blocchi. L'agente registra l'esito in `project-state.md`; il Coordinatore aggiorna `Pipeline agenti/cronologia/` se la produzione è lunga.
 
-- ❌ Mandare editing prima che lo script sia definitivo.
-- ❌ Saltare il QA per "velocizzare".
-- ❌ Assegnare compiti tecnici a Script o viceversa.
-- ❌ Rifare tutto da zero quando basta una correzione puntuale.
-- ❌ Dimenticare di aggiornare project-state.md.
-- ❌ Chiedere all'utente se vuole renderizzare il video anziché farlo in automatico.
+## Stop gate
 
-## 7. Protocollo Interfaccia Utente (Video Creative Director)
+Se un requisito essenziale dipende da accesso, app, server, login, file o permesso mancante:
+1. Verifica una volta stato e alternative autorizzate.
+2. Non fare retry identici, non inventare un asset sostitutivo, non dichiarare successo.
+3. Completa attività indipendenti e salva errore letterale, file, fase e conseguenza.
+4. Chiedi all'utente una singola azione concreta; riprendi solo dopo l'intervento.
 
-Il Coordinatore è l'**unica interfaccia** con cui parla l'utente:
-1. **Accoglienza dell'idea:** Riceve le parole grezze del cliente o i file in `video_da_editare/`.
-2. **Intervista Mirata (se mancano dettagli chiave):** Pone solo domande essenziali e strategiche (formato/piattaforma, durata desiderata, tono visivo/narrativo, call-to-action).
-3. **Presentazione Impeccabile:** Formula una proposta di regia strutturata ed elegante:
-   - **Concept & Visione**
-   - **Hook dei primi 3 secondi**
-   - **Struttura delle scene a blocchi**
-   - **Palette colori & Stile tipografico**
-   - **Elementi 3D e Sound Design**
-4. **Stile di Comunicazione:** Nessun testo caotico o emoji casuali; formatting pulito, rigoroso e da agenzia creativa d'élite.
+## QA e render
 
-## 8. Obbligo di Render Automatico
+- QA copre dossier ↔ script ↔ visual, caption/audio, durata, safe areas, export e limiti non testati.
+- Render automatico a QA superato, senza chiedere conferma. Se fallisce, conserva log, indaga una causa alla volta e non sovrascrive un render buono finché la nuova versione non è valida.
+- Consegna link/file, formato/durata, QA effettuato, limiti, sorgenti e prossimo intervento se necessario.
 
-Alla conclusione della pipeline (dopo l'approvazione del QA):
-1. Il Coordinatore lancia **automaticamente** il render Remotion:
-   `npx remotion render src/index.ts <CompositionId> video_renderizzati/<nome-video>.mp4`
-2. Non deve chiedere conferma per il render: il deliverable finale deve essere trovato direttamente e subito in `video_renderizzati/`.
-3. Notifica all'utente il percorso del file finale pronto con i dettagli di durata e risoluzione.
+## Neutralità e sicurezza
+
+Non copiare branding o dati di un altro progetto nelle istruzioni condivise o nei commit di pipeline. Non pubblicare, non installare package globali, non avviare server esposti e non commettere segreti/media cliente senza autorizzazione e selezione esplicita dei file.

@@ -23,7 +23,7 @@ Guida completa per usare Rimotion con la pipeline di agenti coordinati per la pr
 
 ## 1. Cos'è la pipeline
 
-La pipeline è un sistema di **7 agenti AI coordinati** che prendono un'idea di video e producono in autonomia:
+La pipeline comprende **10 ruoli AI coordinati**. Il Coordinatore attiva gli specialisti pertinenti per produrre:
 - Sceneggiatura completa
 - Montaggio (codice Remotion)
 - Audio e sottotitoli
@@ -32,9 +32,7 @@ La pipeline è un sistema di **7 agenti AI coordinati** che prendono un'idea di 
 
 **Tu dai il brief → il sistema produce il video pronto per la revisione.**
 
-Non serve intervento manuale nel montaggio: l'unico momento in cui intervieni è:
-- All'inizio (brief)
-- Alla fine (approvazione)
+L'automazione prosegue per le fasi reversibili e chiede intervento quando una fase essenziale dipende da server/GUI/login/file non disponibile o da una decisione che il brief non contiene.
 
 ---
 
@@ -59,7 +57,7 @@ es. *"Attiva Remotion e fammi un video che parla di sport"*
    - **Materiali**: hai caricato video/foto in `video_da_editare/` o creiamo tutto da codice, grafica e 3D Blender?
    - **Sottotitoli & audio**: sottotitoli word-by-word con karaoke highlight, musica ritmata?
 3. **Pitch di regia**: ricevute le risposte, presenta il piano (Vision, Hook 0-3s, Storyboard a blocchi) in formato pulito, senza emoji infantili o slop visivo.
-4. **Produzione e render automatico**: con il tuo via libera, coordina in background tutti gli specialisti (Script, Editing Remotion, Blender 3D, Audio, QA) ed esporta il file MP4 finito in `video_renderizzati/` **senza chiedere ulteriori conferme**.
+4. **Produzione e render**: coordina Ricerca, Script, Design System, Editing, Blender, Audio, Pipeline Tecnica e QA secondo le dipendenze; dopo il gate QA renderizza e verifica l'MP4. Se un passaggio essenziale richiede una GUI, un server, login o file mancante, fermati e chiedi l'intervento esatto.
 
 ---
 
@@ -72,7 +70,7 @@ Rimotion/
 ├── src/                    ← codice Remotion (componenti e scene video)
 ├── public/                 ← asset statici (immagini, font, audio)
 ├── .agent/
-│   ├── agents/             ← definizione ruoli agenti (7 file .md)
+│   ├── agents/             ← definizione ruoli agenti (10 file .md)
 │   ├── skills/             ← competenze specializzate (coordination, hook, color-system, video-frame-tools, impeccable)
 │   ├── memory/             ← "secondo cervello" di ogni agente (knowledge.md)
 │   └── mcp_config.json     ← server MCP configurati (Blender, 21st.dev Magic, Graphify)
@@ -266,12 +264,27 @@ Usa lo stesso stile visivo per tutti e tre.
 | **QA/Revisione** | Controllo qualità, audit Impeccable | Browser Antigravity, Impeccable |
 | **Ricerca Marketing** | Tendenze, best practice, analisi mercato | Ricerca web nativa |
 | **Grafica 3D** | Asset 3D, loghi, intro, animazioni 3D | MCP Blender (porta 9876) |
+| **Ricerca e Fact-Checking** | Dossier verificabili e claim-id | Fonti primarie e peer-reviewed |
+| **Design System** | Token, tipografia, palette, diagrammi e accessibilità | Skill di design e color-system |
+| **Pipeline Tecnica** | Integrazione Blender/Remotion, manifest e diagnostica export | CLI locali |
 
 ### Regole importanti
-- Ogni agente lavora SOLO nel suo ambito.
+- Ogni agente lavora nel suo ambito, legge il proprio dossier/memoria e documenta l'handoff.
 - Se un compito non è di sua competenza, lo rimanda al Coordinatore.
+- Un asset 3D richiesto deve rappresentare componenti reali/funzioni identificate; un'icona o una primitiva non sostituiscono il macchinario.
+- Se una fase essenziale richiede un server/GUI/file non disponibile, si registra l'errore e si chiede l'intervento minimo. Vietato fingere un successo o consegnare un surrogato non concordato.
 - L'agente Grafica 3D non tocca MAI il codice Remotion.
 - L'agente Script non fa MAI editing visivo.
+
+### Modellazione didattica e passaggio Blender → Remotion
+
+1. Prima di modellare, il Fact-Checker documenta i componenti reali e il Design System decide colori, gerarchia e convenzioni grafiche.
+2. Suddividi l'apparato in camera, supporti, bobine, sorgente/oggetto studiato e strumenti di misura; una sezione o un cutaway deve rendere leggibile ciò che normalmente sarebbe nascosto.
+3. Anima stati osservabili in ordine causale: stato iniziale, avvio, regime o evento, misure/test. Non inventare numeri, soglie o controlli che le fonti non supportano.
+4. Se geometria, luce o trasparenza rendono il modello illeggibile, crea una preview statica e correggi inquadratura e occlusioni prima del render animato.
+5. Etichetta modello e dati come schema, non in scala, visualizzazione qualitativa o simulazione secondo ciò che è effettivamente vero. Non presentare tracce illustrative come misura scientifica.
+6. Per l'handoff usa sequenza d'immagini o video con nomi deterministici, risoluzione, fps e manifest dichiarati. Remotion sincronizza con `useCurrentFrame`; verifica il frame iniziale, uno intermedio, uno finale e i metadati del file esportato.
+7. Se una fase dipende da Blender GUI/MCP non disponibile e la CLI non basta, arresta quella fase: registra l'errore preciso e chiedi l'intervento necessario.
 
 ---
 
@@ -334,7 +347,7 @@ Ogni agente ha un "secondo cervello" in `.agent/memory/<nome-agente>/knowledge.m
 - **21st.dev:** login effettuato con `npx -y @21st-dev/cli@latest login`.
 - **Graphify:** grafo già generato in `graphify-out/`. L'estrazione semantica dei documenti richiede una `GEMINI_API_KEY` (gratuita) o `ANTHROPIC_API_KEY` valida; il grafo del codice è locale e gratuito. Dopo modifiche importanti al codice: `graphify update .`.
 
-La tabella completa di verifica ambiente (cosa installare se manca qualcosa) è in `CLAUDE.md` §3.
+La tabella di verifica ambiente e delle alternative locali è in `CLAUDE.md` §3. La verifica non autorizza installazioni: se manca un requisito essenziale e non esiste un'alternativa, registra il blocco e chiedi l'intervento preciso.
 
 ---
 
@@ -372,8 +385,8 @@ genera i sottotitoli word-by-word e monta il reel con karaoke highlight.
 ## 9. Troubleshooting
 
 ### "Il video non si renderizza"
-1. Verifica che Remotion sia aggiornato: `npm run upgrade`
-2. Controlla gli errori nel terminale: `npm run dev`
+1. Leggi l'errore completo e verifica runtime/versioni già presenti; non aggiornare o installare pacchetti automaticamente.
+2. Controlla gli errori del render e usa la preview solo come diagnosi, non come output finale.
 3. Verifica che il codice usi `useCurrentFrame()` e `interpolate()`, non animazioni CSS pure che congelano nei frame.
 
 ### "I sottotitoli non sono sincronizzati"
@@ -382,9 +395,10 @@ genera i sottotitoli word-by-word e monta il reel con karaoke highlight.
 3. Chiedi all'agente QA un controllo automatico del timing.
 
 ### "L'asset 3D non appare"
-1. Verifica che Blender sia in esecuzione con il MCP attivo.
-2. Controlla che il file sia stato esportato nella cartella `public/` o `output/` (formato PNG con alpha o MP4).
-3. Usa `staticFile("nome-asset.png")` per importarlo nel componente Remotion.
+1. Verifica separatamente Blender CLI, GUI e MCP/porta; la presenza dell'app non prova che il server sia attivo.
+2. Controlla file, codec, durata, alpha, fps e path; apri un frame render di controllo.
+3. Se serve una GUI/MCP non attiva, registra l'errore e chiedi all'utente di avviarla. Un logo o un toro stilizzato non sostituisce una ricostruzione funzionale richiesta.
+4. Solo dopo la verifica importa il file con `staticFile("nome-asset.png")` o `<OffthreadVideo>` nel componente Remotion.
 
 ### "Un agente non risponde come previsto"
 1. Controlla il suo file `.agent/agents/<nome>.md` per verificare il ruolo.
