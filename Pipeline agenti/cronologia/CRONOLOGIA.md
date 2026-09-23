@@ -1,7 +1,7 @@
 # Cronologia della pipeline
 
 Ultimo aggiornamento: 24 settembre 2026
-Stato: pipeline aggiornata; modello e clip Blender renderizzati; short completo aggiornato; branch GitHub pronto per push e revisione.
+Stato: pipeline aggiornata; modello e clip Blender renderizzati; short completo aggiornato; pull request aperta per revisione.
 
 ## Registro delle attività
 
@@ -16,7 +16,7 @@ Stato: pipeline aggiornata; modello e clip Blender renderizzati; short completo 
 | 2026-09-24 | Montaggio completo | Sostituita la scena schematica con il video Blender; il frame del plasma stabile tiene per la parte residua della scena. | Output locale `video_renderizzati/fusione-confinamento-3d.mp4` | Render Remotion completato: 3.538 frame, H.264, circa 118 s; audio e sottotitoli rimangono nella timeline esistente. |
 | 2026-09-24 | Controllo immagine | Esaminato il frame della scena integrata con sottotitoli e intestazioni tradotte. | `video_renderizzati/qa-tokamak-scene-final.png` | Componenti riconoscibili, note scientifiche presenti; non è stato fatto un ascolto umano integrale dell'audio. |
 | 2026-09-24 | Diagnostica ambiente | Il wrapper npm/npx globale è risultato incompleto; il render ha usato la CLI Remotion già presente nel progetto. | `scripts/render-tokamak.ps1`, `remotion.config.ts` | Nessun pacchetto installato. La scansione Tailwind è saltata solo per l'entry point isolato della clip. |
-| 2026-09-24 | Consegna Git | Creato un branch dedicato con documentazione e codice riusabili selezionati esplicitamente. | `codex/pipeline-upgrade-scientific-3d` | Restano push, PR e revisione del branch; asset/output specifici e media temporanei non sono staged. |
+| 2026-09-24 | Consegna Git | Creato e inviato un branch dedicato; aperta la pull request con documentazione e codice riusabili selezionati esplicitamente. | `codex/pipeline-upgrade-scientific-3d` | La revisione GitHub è aperta; asset/output specifici e media temporanei non sono staged. |
 
 ## Decisioni e limiti da preservare
 
@@ -32,7 +32,7 @@ Stato: pipeline aggiornata; modello e clip Blender renderizzati; short completo 
 - [x] Verificare il conteggio frame, il codec riportato dal render e un frame rappresentativo con sottotitolo.
 - [x] Controllare l'apertura, l'animazione del plasma e le etichette delle fasi.
 - [x] Controllare le modifiche staged per spazi finali e riferimenti di brand.
-- [ ] Pushare il branch e aprire una pull request, senza output o media temporanei.
+- [x] Pushare il branch e aprire una pull request senza output o media temporanei.
 - [ ] Ascolto umano completo della traccia e verifica professionale della sincronizzazione: richiedono una revisione editoriale finale.
 
 ## File principali
